@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    
+    <meta charset="utf-8" />
+    <meta name="description" content="Изучение основ HTML5 для новичков" />
+    <title>CRM INTRUM</title>
+    {% block styles %}
+        <link rel="stylesheet"  type="text/css" href="{{url_for('.static', filename='style.css')}}">
+    {% endblock %}
+  </head>
+  <body>
+    <div class="main">
+        <div class="info_id">
+            <div>Name:<h4>{{user_username}}</h4></div>
+            <hr width="100%" color="black" size="3px"/>
+            <div>Lead ID:<h4>{{user_id}}</h4></div>
+        </div>
+
+        <div class="info_client">
+            <div>IP Country:<h4>{{user_ip}}</h4></div>
+            <hr width="100%" color="black" size="3px"/>
+            <div>Phone:<h4>{{user_phone}}</h4></div>
+            <hr width="100%" color="black" size="3px"/>
+            <div>E-mail:<h4>{{user_mail}}</h4></div>
+            <hr width="100%" color="black" size="3px"/>
+            <div>Status:<h4>{{user_status}}</h4></div>
+        </div>
+
+        <div class="input">
+          <form>
+            <div>Change status:</div>
+            <p><select name="select" size="1">
+             <option selected value="s1">-- Change LEAD status --</option>
+             <option value="s2">NEW</option>
+             <option value="s3">Звонок совершен</option>
+             <option value="s4">Собеседование назначено</option>
+             <option value="s5">Собеседование проведено</option>
+             <option value="s6">Обучение началось</option>
+             <option value="s7">Остался через 14 дней</option>
+             <option value="s8">Остался через 30 дней</option>
+             <option value="s9">Приняли на работу</option>
+             <option value="s10">Закрыли сделку</option>
+            </select>
+            <hr width="100%" color="black" size="3px"/>
+           </form>
+          
+          <div class="date">Date/Time</div>
+          <input type="datetime-local" id="localdate" name="date"/>
+          <hr width="100%" color="black" size="3px"/>
+  
+          <div class="comment">Comments</div>
+          <input type="text" id="name" name="name" required minlength="4" maxlength="100" size='10'/>
+  
+          <div class="button">
+            <button>Отправить</button>
+          </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
