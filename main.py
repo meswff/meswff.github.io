@@ -12,12 +12,12 @@ def php(script_path, argument):
 
 @app.route('/<id_offer>')
 def index(id_offer):
-  result = php('C:\\Users\\meswff\\Desktop\\crm_intrup\\byid.php', id_offer)
-  my_dict = result
+  result = php('C:\\Users\\meswff\\Desktop\\crm_intrum\\byid.php', id_offer)
   print(result)
-  
-  customer_id = my_dict['0']['customers_id']
-  sale_stage_id = my_dict['0']['sale_stage_id']
+  my_dict = json.loads(result)
+
+  customer_id = my_dict['customers_id']
+  sale_stage_id = my_dict['sale_stage_id']
   
   name_full = my_dict['name'] + ' ' + my_dict['surname']
   try:
