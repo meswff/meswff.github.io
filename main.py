@@ -12,7 +12,7 @@ def php(script_path, argument):
 
 @app.route('/<id_offer>')
 def index(id_offer):
-  result = php('C:\\Users\\meswff\\Desktop\\crm_intrum\\byid.php', id_offer)
+  result = php('byid.php', id_offer)
   print(result)
   my_dict = json.loads(result)
 
