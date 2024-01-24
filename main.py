@@ -13,7 +13,6 @@ def php(script_path, argument):
 @app.route('/<id_offer>')
 def index(id_offer):
   result = php('C:\\Users\\meswff\\Desktop\\crm_intrup\\byid.php', id_offer)
-  my_dict = json.loads(result)
   
   customer_id = my_dict['0']['customers_id']
   sale_stage_id = my_dict['0']['sale_stage_id']
