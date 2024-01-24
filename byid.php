@@ -11,7 +11,7 @@
 	$maximum = max($data)['sale_id'];
 
 	$result = $api->filterSales(array( 
-		'byid' => $argv[1]
+		'byid' => '85850'
 	));
 
 	$data = $result['data']['list'];
@@ -21,14 +21,8 @@
 		'byid' => $id_customer
 	));
 	
-	if (!is_array($res_customer)) {
-		$global_array = $data['0'];
-	} else {
-		$global_array = array_merge($data, $res_customer['data']['list']['0']);
-	}
+	$json_byid = json_encode(array_merge($data['0'], $res_customer['data']['list']['0']));
 
-	$json = json_encode($global_array);
-
-	print_r($json);
+	print_r($json_byid);
 
 ?>
