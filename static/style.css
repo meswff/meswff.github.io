@@ -53,6 +53,7 @@ body {
 
 .other_div {
     visibility: hidden;
+    margin-top: 20px;
     width: 350px;
     height: 220px;
     display: grid;
