@@ -17,6 +17,7 @@ function saveFormData() {
     var comments = document.getElementById("name").value;
 
     var lead_id = document.location.pathname
+    var lead_id = lead_id.substring(1);
 
     // Create a data object
     var formData = {
