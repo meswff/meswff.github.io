@@ -31,17 +31,17 @@
         <div class="form_div">
           <form>
             <div>Change status:</div>
-            <p><select name="select" size="1" onchange="show()">
+            <p><select name="select" size="1" onchange="show()" id="statusSelect">
              <option selected value="s1">{{lead_status}}</option>
-             <option value="s2">NEW</option>
-             <option value="s3">Звонок совершен</option>
-             <option value="s4">Собеседование назначено</option>
-             <option value="s5">Собеседование проведено</option>
-             <option value="s6">Обучение началось</option>
-             <option value="s7">Остался через 14 дней</option>
-             <option value="s8">Остался через 30 дней</option>
-             <option value="s9">Приняли на работу</option>
-             <option value="s10">Закрыли сделку</option>
+             <option value="s2_2">NEW</option>
+             <option value="s3_2">Звонок совершен</option>
+             <option value="s4_2">Собеседование назначено</option>
+             <option value="s5_2">Собеседование проведено</option>
+             <option value="s6_2">Обучение началось</option>
+             <option value="s7_2">Остался через 14 дней</option>
+             <option value="s8_2">Остался через 30 дней</option>
+             <option value="s9_2">Приняли на работу</option>
+             <option value="s10_2">Закрыли сделку</option>
             </select>
            </form>
         </div>
@@ -54,7 +54,7 @@
         <div>Comments</div>
         <input type="text" id="name" name="name" required minlength="4" maxlength="100" size='10'/>
   
-        <div class="button">
+        <div class="button" onclick="saveFormData()">
             <button>Отправить</button>
         </div>
       </div>
