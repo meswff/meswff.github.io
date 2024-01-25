@@ -16,7 +16,7 @@ function saveFormData() {
     var localDate = document.getElementById("localdate").value;
     var comments = document.getElementById("name").value;
 
-    var lead_id = document.location.search
+    var lead_id = document.location.pathname
 
     // Create a data object
     var formData = {
