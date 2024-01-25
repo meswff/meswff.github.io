@@ -31,21 +31,21 @@
         <div class="form_div">
           <form>
             <div>Change status:</div>
-            <p><select name="select" size="1" onchange="show()">
+            <p><select name="select" size="1" onchange="show()" id="statusSelect">
              <option selected value="s1">{{lead_status}}</option>
-             <option value="s2">Новый</option>
-             <option value="s3">Неотвеченный</option>
-             <option value="s4">Уточненный</option>
-             <option value="s5">Отложенный спрос</option>
-             <option value="s6">Приглашение</option>
-             <option value="s7">Встреча</option>
-             <option value="s8">Без договора</option>
-             <option value="s9">Договор</option>
-             <option value="s10">Задаток</option>
-             <option value="s11">Закрытие сделки</option>
-             <option value="s12">Отказ</option>
-             <option value="s13">АВТООБЗВОН</option>
-             <option value="s14">Дубль/брак</option>
+             <option value="s2_1">Новый</option>
+             <option value="s3_1">Неотвеченный</option>
+             <option value="s4_1">Уточненный</option>
+             <option value="s5_1">Отложенный спрос</option>
+             <option value="s6_1">Приглашение</option>
+             <option value="s7_1">Встреча</option>
+             <option value="s8_1">Без договора</option>
+             <option value="s9_1">Договор</option>
+             <option value="s10_1">Задаток</option>
+             <option value="s11_1">Закрытие сделки</option>
+             <option value="s12_1">Отказ</option>
+             <option value="s13_1">АВТООБЗВОН</option>
+             <option value="s14_1">Дубль/брак</option>
             </select>
            </form>
             </div>
@@ -58,7 +58,7 @@
           <div>Comments</div>
           <input type="text" id="name" name="name" required minlength="4" maxlength="100" size='10'/>
     
-          <div class="button">
+          <div class="button" onclick="saveFormData()">
               <button>Отправить</button>
           </div>
         </div>
