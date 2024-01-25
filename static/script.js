@@ -28,7 +28,7 @@ function saveFormData() {
 
     jQuery.ajax({
         type: "POST",
-        url: '/update.php',
+        url: 'update.php',
         dataType: 'json',
         data: {functionname: 'add', arguments: [lead_id, formData['status']]},
     
