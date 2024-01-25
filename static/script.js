@@ -26,14 +26,11 @@ function saveFormData() {
         comments: comments
     };
 
-    alert(lead_id)
-
-
     jQuery.ajax({
         type: "POST",
-        url: 'your_functions_address.php',
+        url: '/update.php',
         dataType: 'json',
-        data: {functionname: 'add', arguments: [formData['status'], formData['date'], formData['comments']]},
+        data: {functionname: 'add', arguments: [lead_id, formData['status']]},
     
         success: function (obj, textstatus) {
                       if( !('error' in obj) ) {
@@ -44,4 +41,5 @@ function saveFormData() {
                       }
                 }
     });
+    alert('Стадия успешно изменена')
 }
