@@ -30,7 +30,7 @@
         <div class="input">
           <form>
             <div>Change status:</div>
-            <p><select name="select" size="1">
+            <p><select name="select" size="1" onchange="show()">
              <option selected value="s1">{{lead_status}}</option>
              <option value="s2">Новый</option>
              <option value="s3">Неотвеченный</option>
@@ -48,18 +48,21 @@
             </select>
             <hr width="100%" color="black" size="3px"/>
            </form>
-          
-          <div class="date">Date/Time</div>
+            </div>
+        </div>
+        <div class="other_div">
+          <div>Date/Time</div>
           <input type="datetime-local" id="localdate" name="date"/>
           <hr width="100%" color="black" size="3px"/>
-  
-          <div class="comment">Comments</div>
+    
+          <div>Comments</div>
           <input type="text" id="name" name="name" required minlength="4" maxlength="100" size='10'/>
-  
+    
           <div class="button">
-            <button>Отправить</button>
+              <button>Отправить</button>
           </div>
         </div>
+    
     </div>
 
     <script src="script.js"></script>
