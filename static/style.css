@@ -39,9 +39,9 @@ body {
     box-shadow: 3px 5px 16px rgba(0, 0, 0, 0.5);
 }
 
-.input {
+.form_div {
     width: 350px;
-    height: 275px;
+    height: 90px;
     display: grid;
     padding: 20px;
     background-color: rgb(186, 234, 252);
@@ -49,15 +49,27 @@ body {
     box-shadow: 3px 5px 16px rgba(0, 0, 0, 0.5);  
 }
 
+.other_div {
+    visibility: hidden;
+    width: 350px;
+    height: 220px;
+    display: grid;
+    padding: 20px;
+    background-color: rgb(186, 234, 252);
+    border-radius: 15px;
+    box-shadow: 3px 5px 16px rgba(0, 0, 0, 0.5); 
+}
+
+
 select {
-border: 1px solid #e0e0e0;
-border-radius: 3px;
-padding: 0 5px;
-line-height: 36px;
-height: 36px;
-box-shadow: inset 1px 1px 1px 0px rgba(0, 0, 0, 0.1);
-background: #fff;
-width: 310px; 
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+    padding: 0 5px;
+    line-height: 36px;
+    height: 36px;
+    box-shadow: inset 1px 1px 1px 0px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    width: 310px; 
 }
 
 .button {
@@ -65,4 +77,3 @@ width: 310px;
     display: grid;
     margin-top: 10px;
 }
-  
