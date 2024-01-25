@@ -39,15 +39,7 @@ body {
     box-shadow: 3px 5px 16px rgba(0, 0, 0, 0.5);
 }
 
-.input {
-    width: 350px;
-    height: 275px;
-    display: grid;
-    padding: 20px;
-    background-color: rgb(186, 234, 252);
-    border-radius: 15px;
-    box-shadow: 3px 5px 16px rgba(0, 0, 0, 0.5);  
-}
+
 
 .form_div {
     width: 350px;
