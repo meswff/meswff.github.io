@@ -11,7 +11,7 @@
 	$maximum = max($data)['sale_id'];
 
 	$result = $api->filterSales(array( 
-		'byid' => '85850'
+		'byid' => $argv[1]
 	));
 
 	$data = $result['data']['list'];
