@@ -3,7 +3,7 @@ function show() {
     element.style.visibility = 'visible';;
   }
 
-function saveFormData() {
+function submitForm() {
     // Get selected status value
     var selectedStatus = document.getElementById("statusSelect").value;
 
@@ -11,7 +11,7 @@ function saveFormData() {
     var localDate = document.getElementById("localdate").value;
     var comments = document.getElementById("name").value;
 
-    var lead_id = document.location.pathname
+    var lead_id = document.location.search
     var lead_id = lead_id.substring(1);
 
     // Create a data object
@@ -20,4 +20,19 @@ function saveFormData() {
         date: localDate,
         comments: comments
     };
-}
+    };
+
+    fetch('/process_data', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(result => {
+        document.getElementById('result').innerText = result.result;
+    })
+    .catch(error => {
+        console.error('Ошибка:', error);
+    });
