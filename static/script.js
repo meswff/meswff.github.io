@@ -30,8 +30,7 @@ function saveFormData() {
         type: "POST",
         url: 'update.php',
         dataType: 'json',
-        data: {functionname: 'add', arguments: [lead_id, formData['status']]},
-    
+        data: {functionname: 'add', arguments: [lead_id, formDatap['status']]},
         success: function (obj, textstatus) {
                       if( !('error' in obj) ) {
                           yourVariable = obj.result;
@@ -40,6 +39,6 @@ function saveFormData() {
                           console.log(obj.error);
                       }
                 }
-    });
+    })};
     alert('Стадия успешно изменена')
 }
