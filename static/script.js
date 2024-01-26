@@ -3,11 +3,6 @@ function show() {
     element.style.visibility = 'visible';;
   }
 
-function hide() {
-element = document.querySelector('.other_div')
-element.style.visibility = 'visible';;
-}
-
 function saveFormData() {
     // Get selected status value
     var selectedStatus = document.getElementById("statusSelect").value;
