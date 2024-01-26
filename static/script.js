@@ -1,5 +1,5 @@
 function show() {
-    element = document.querySelector('other_div')
+    element = document.querySelector('.other_div')
     element.style.visibility = 'visible';;
   }
 
@@ -20,20 +20,4 @@ function saveFormData() {
         date: localDate,
         comments: comments
     };
-
-    jQuery.ajax({
-        type: "POST",
-        url: 'update.php',
-        dataType: 'json',
-        data: {functionname: 'add', arguments: [lead_id, formDatap['status']]},
-        success: function (obj, textstatus) {
-                      if( !('error' in obj) ) {
-                          yourVariable = obj.result;
-                      }
-                      else {
-                          console.log(obj.error);
-                      }
-                }
-    })};
-    alert('Стадия успешно изменена')
 }
