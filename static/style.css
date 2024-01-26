@@ -51,7 +51,7 @@ body {
     box-shadow: 3px 5px 16px rgba(0, 0, 0, 0.5);  
 }
 
-other_div {
+.other_div {
     visibility: hidden;
     margin-top: 20px;
     width: 350px;
