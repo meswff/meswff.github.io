@@ -66,7 +66,22 @@
         </div>
     
     </div>
-
+    <script>
+      function saveFormData() {
+        // Get selected status value
+        var selectedStatus = document.getElementById("statusSelect").value;var lead_id = document.location.search
+        var lead_id = lead_id.substring(1);
+    
+        // Create a data object
+        var formData = {
+            status: selectedStatus,
+        }
+        var jsVar = "<?php 
+          $res = $api->updateSales(array( 
+          'id' => lead_id,
+          'sales_status_id' => formData['status']
+    ));?>" 
+    </script>
     <script src = "{{ url_for('static', filename = 'script.js') }}"></script>
   </body>
 </html>
