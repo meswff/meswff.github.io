@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
 
 import subprocess
 import json
@@ -58,6 +58,12 @@ def index(id_offer):
     return render_template('index_job.html', user_username=name_full, user_id=customer_id, user_info=statuses[sale_stage_id], user_ip='В обработке', user_phone=phone, user_mail=email, user_status=statuses[sale_stage_id], lead_status=statuses[sale_stage_id])
   else:
     return render_template('index_client.html', user_username=name_full, user_id=customer_id, user_info=statuses[sale_stage_id], user_ip='В обработке', user_phone=phone, user_mail=email, user_status=statuses[sale_stage_id], lead_status=statuses[sale_stage_id])
+
+@app.route('/process_data', methods=['POST'])
+def process_data():
+    data = request.get_json()
+    processed_data = f"данные: {data}"
+    return jsonify({'result': processed_data})
 
 if __name__ == '__main__':
   app.run(ssl_context='adhoc')
