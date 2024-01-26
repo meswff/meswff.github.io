@@ -1,5 +1,5 @@
 function show() {
-    element = document.querySelector('.other_div')
+    element = document.querySelector('other_div')
     element.style.visibility = 'visible';;
   }
 
