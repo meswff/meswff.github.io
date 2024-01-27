@@ -1,25 +1,38 @@
 <?php
 
-	require_once 'usage.php'; //настройте данный конфигурационный файл
-
-
-$arg = json_decode($argv[1]);
+    require_once 'usage.php'; //настройте данный конфигурационный файл
 
 $insert_status = $api->updateSales(array( 
 	array(    
-	'id' => $arg['0']['0'],
-	'sales_status_id' => $arg['0']['1']
+        'id' => $argv[1],
+        'sales_status_id' => $argv[2]
 	),  
 ));
 
-$insert = $api->insertEvent(array( 
-	'dtend' => $arg['0']['2'],
-	'description' => $arg['0']['3'],
-	'summary' => 'Автоматически созданное напоминание через телеграмм бота',
-	'connections' => $argv['0']['0']
+$result = $api->filterSales(array( 
+    'byid' => $argv[1],
 ));
 
-print_r($insert_status);
+
+$cust_id = $result['data']['list']['0']['employee_id'];
+
+$insert = $api->insertEvent(array( 
+    'event' => array(
+        'dtstart' => $argv[3],
+        'dtend' => $argv[3],
+        'description' => $argv[4],
+        'summary' => 'Автоматически созданное напоминание через телеграмм бота',
+        'connections' => $argv[1],
+        'author_id' => $cust_id,
+        'alarms' => array(
+            'trigger' => '-P10M',
+            'notice' => 'Автоматически созданное напоминание через телеграмм бота'
+        ),
+        'type_id' => '2'
+    ),
+));
+
 print_r($insert);
+print_r($insert_status);
 
 ?>
