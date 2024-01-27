@@ -74,21 +74,21 @@ def index(id_offer):
 
 @app.route('/process_data', methods=['POST'])
 def process_data():
-    data = request.get_json()
+  data = request.get_json()
 
-    saleid = data['saleid']
-    year_and_moth = data['date'].split('-')
-    day = str(year_and_moth[2])[0:-6]
-    datatime = str(year_and_moth[2]).split('T')
-    result_time = str(datatime[1]).split(':')
-    date_time = datetime.datetime(int(year_and_moth[0]), int(year_and_moth[1]), int(day), int(result_time[0]), int(result_time[1]))
-    
-    unix_time = int(time.mktime(date_time.timetuple()))
-    array = json.dumps([[saleid, data['status'], unix_time, data['comment']]])
-    php_argv('update.php', array)
-    
-    
-    return jsonify({'result': data})
+  saleid = data['saleid']
+  year_and_moth = data['date'].split('-')
+  day = str(year_and_moth[2])[0:-6]
+  datatime = str(year_and_moth[2]).split('T')
+  result_time = str(datatime[1]).split(':')
+  date_time = datetime.datetime(int(year_and_moth[0]), int(year_and_moth[1]), int(day), int(result_time[0]), int(result_time[1]))
+  
+  unix_time = int(time.mktime(date_time.timetuple()))
+  array = json.dumps([[saleid, data['status'], unix_time, data['comment']]])
+
+  php_argv('update.php', array)
+
+  return jsonify({'result': data})
 
 if __name__ == '__main__':
   app.run(ssl_context='adhoc')
