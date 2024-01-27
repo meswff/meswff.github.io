@@ -58,6 +58,16 @@ class Api
         return $this->send("/stock/category");
     }
 
+    public function getEventsFilter(array $params = array())
+    {
+        return $this ->send("/org_events/get", $params);
+    }
+
+    public function insertEvent(array $params)
+    {
+        return $this ->send("/org_events/insert", $params);
+    }
+
     // поля
     public function getStockFields()
     {
