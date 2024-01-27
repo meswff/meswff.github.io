@@ -4,22 +4,14 @@ function show() {
   }
 
 function submitForm() {
-    // Get selected status value
     var selectedStatus = document.getElementById("statusSelect").value;
+    var selectedDate = document.getElementById('date').value;
+    var selectedComment = document.getElementById('comment').value;
 
-    // Get date/time and comments
-    var localDate = document.getElementById("localdate").value;
-    var comments = document.getElementById("name").value;
-
-    var lead_id = document.location.search
-    var lead_id = lead_id.substring(1);
-
-    // Create a data object
-    var formData = {
+    var data = {
         status: selectedStatus,
-        date: localDate,
-        comments: comments
-    };
+        date: selectedDate,
+        comment: selectedComment
     };
 
     fetch('/process_data', {
@@ -36,3 +28,4 @@ function submitForm() {
     .catch(error => {
         console.error('Ошибка:', error);
     });
+}
