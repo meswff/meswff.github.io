@@ -3,7 +3,8 @@ function show() {
     element.style.visibility = 'visible';;
   }
 
-function submitForm() {
+  function submitForm() {
+    var selectedSaleId = window.location.pathname.slice(1)
     var selectedStatus = document.getElementById("statusSelect").value;
     var selectedDate = document.getElementById('date').value;
     var selectedComment = document.getElementById('comment').value;
@@ -11,7 +12,8 @@ function submitForm() {
     var data = {
         status: selectedStatus,
         date: selectedDate,
-        comment: selectedComment
+        comment: selectedComment,
+        saleid: selectedSaleId
     };
 
     fetch('/process_data', {
@@ -28,4 +30,5 @@ function submitForm() {
     .catch(error => {
         console.error('Ошибка:', error);
     });
+    alert('Данные отправлены в CRM')
 }
