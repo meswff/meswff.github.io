@@ -11,17 +11,21 @@
 	$maximum = max($data)['sale_id'];
 
 	$result = $api->filterSales(array( 
-		'byid' => $argv[1]
+		'byid' => '86200'
 	));
 
 	$data = $result['data']['list'];
-	$id_customer = $data[0]['customers_id'];
+	$id_customer = $data['0']['customers_id'];
 
 	$res_customer = $api->filterCustomers(array( 
 		'byid' => $id_customer
 	));
 	
-	$json_byid = json_encode(array_merge($data['0'], $res_customer['data']['list']['0']));
+	if (!is_array($res_customer)) {
+		$json_byid = json_encode(array_merge($data['0'], $res_customer['data']['list']['0']));
+	} else {
+		$json_byid = json_encode($data['0']);
+	}
 
 	print_r($json_byid);
 
