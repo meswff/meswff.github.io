@@ -12,6 +12,11 @@ def php(script_path, argument):
   result = p.communicate()[0]
   return result
 
+def php_argv(script_path, argument, argument2, argument3, argument4):
+  p = subprocess.Popen(['php', script_path, argument, argument2, argument3, argument4], stdout=subprocess.PIPE)
+  result = p.communicate()[0]
+  return result
+
 @app.route('/<id_offer>')
 def index(id_offer):
   result = php('byid.php', id_offer)
