@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, jsonify
 
 import subprocess
 import json
+import datetime
+import time
 
 app = Flask(__name__)
 
@@ -62,8 +64,19 @@ def index(id_offer):
 @app.route('/process_data', methods=['POST'])
 def process_data():
     data = request.get_json()
-    processed_data = f"данные: {data}"
-    return jsonify({'result': processed_data})
+
+    saleid = data['saleid']
+    year_and_moth = data['date'].split('-')
+    day = str(year_and_moth[2])[0:-6]
+    datatime = str(year_and_moth[2]).split('T')
+    result_time = str(datatime[1]).split(':')
+    date_time = datetime.datetime(int(year_and_moth[0]), int(year_and_moth[1]), int(day), int(result_time[0]), int(result_time[1]))
+    
+    unix_time = int(time.mktime(date_time.timetuple()))
+    php_argv('update.php', [saleid, data['status'], unix_time, data['comment']])
+    
+    
+    return jsonify({'result': data})
 
 if __name__ == '__main__':
   app.run(ssl_context='adhoc')
