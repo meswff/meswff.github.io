@@ -48,18 +48,20 @@
            </form>
         </div>
 
-      <div class="other_div">
-        <div>Date/Time</div>
-        <input type="datetime-local" id="localdate" name="date"/>
-        <hr width="100%" color="black" size="3px"/>
-  
-        <div>Comments</div>
-        <input type="text" id="name" name="name" required minlength="4" maxlength="100" size='10'/>
-  
-        <div class="button" onclick="submitForm()">
-            <button>Отправить</button>
-        </div>
-      </div>
+      <form class="other_div" id="dataForm">
+          <label for="date">Date/Time</label>
+          <input type="datetime-local" id="date" name="date"/>
+    
+          <hr width="100%" color="black" size="3px"/>
+    
+          <label for="comment">Comments</label>
+          <input type="text" id="comment" name="name" required minlength="4" maxlength="100" size='10'/>
+    
+          <div class="button" onclick="submitForm()">
+              <button>Отправить</button>
+          </div>
+      </form>
+      <div id="result"></div>
     </div>
 
     <script src = "{{ url_for('static', filename = 'script.js') }}"></script>
