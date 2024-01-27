@@ -18,7 +18,7 @@
         </div>
 
         <div class="info_client">
-            <div>IP Country:<h4>{{user_ip}}</h4></div>
+            <div>Sale ID:<h4>{{sale_id}}</h4></div>
             <hr width="100%" color="black" size="3px"/>
             <div>Phone:<h4>+{{user_phone}}</h4></div>
             <div> <a href="https://api.whatsapp.com/send?phone={{user_phone}}" target="_blank">
@@ -61,7 +61,7 @@
               <button>Отправить</button>
           </div>
       </form>
-      <div id="result"></div>
+      <div id="result">{{sale_id}}</div>
     </div>
 
     <script src = "{{ url_for('static', filename = 'script.js') }}"></script>
