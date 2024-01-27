@@ -22,9 +22,9 @@
 	));
 	
 	if (!is_array($res_customer)) {
-		$json_byid = json_encode(array_merge($data['0'], $res_customer['data']['list']['0']));
-	} else {
 		$json_byid = json_encode($data['0']);
+	} else {
+		$json_byid = json_encode(array_merge($data['0'], $res_customer['data']['list']['0']));
 	}
 
 	print_r($json_byid);
