@@ -12,8 +12,7 @@
     	array(    
 	'id' => $argv[1],
 	'sales_status_id' => $argv[2]
-      )  
-        
+      ),  
     ));
 
     $insert = $api->insertEvent(array( 
