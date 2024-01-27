@@ -7,6 +7,7 @@
         'id' => $argv[1],
         'sales_status_id' => $argv[2]
     ));*/
+$arg = json_decode($argv[1])
 
 $insert_status = $api->updateSales(array( 
 	array(    
