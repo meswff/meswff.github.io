@@ -21,7 +21,13 @@ def index(id_offer):
   customer_id = my_dict['customers_id']
   sale_stage_id = my_dict['sale_stage_id']
   
-  name_full = my_dict['name'] + ' ' + my_dict['surname']
+  try:
+    name_full = my_dict['name'] + ' ' + my_dict['surname']
+  except:
+    try:
+      name_full = my_dict['name']
+    except:
+      name_full = 'Отсутствует'
   try:
     phone = my_dict['phone'][0]['phone']
   except:
