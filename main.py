@@ -12,10 +12,10 @@ def php(script_path, argument):
   result = p.communicate()[0]
   return result
 
-def php_argv(script_path, argument):
-  p = subprocess.Popen(['php', script_path, argument], stdout=subprocess.PIPE)
-  result = p.communicate()[0]
-  return result
+def php_argv(script_path, argument, argument2, argument3, argument4):
+    p = subprocess.Popen(['php', script_path, argument, argument2, argument3, argument4], stdout=subprocess.PIPE)
+    result = p.communicate()[0]
+    return result
 
 @app.route('/<id_offer>')
 def index(id_offer):
@@ -84,9 +84,8 @@ def process_data():
   date_time = datetime.datetime(int(year_and_moth[0]), int(year_and_moth[1]), int(day), int(result_time[0]), int(result_time[1]))
   
   unix_time = int(time.mktime(date_time.timetuple()))
-  array = json.dumps([[saleid, data['status'], unix_time, data['comment']]])
-
-  php_argv('update.php', array)
+  array = list([saleid, data['status'], unix_time, data['comment']])
+  php_argv('update.php', str(saleid), str(data['status']), str(unix_time), str(data['comment']))
 
   return jsonify({'result': data})
 
