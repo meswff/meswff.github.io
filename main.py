@@ -36,7 +36,7 @@ def index(id_offer):
       name_full = 'Отсутствует'
   try:
     print(my_dict['phone'])
-    phone = my_dict['phone'][0]['phone']
+    phone = my_dict['phone']['0']['phone']
   except:
     phone = 'Отсутствует'
   try:
