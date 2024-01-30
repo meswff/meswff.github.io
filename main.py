@@ -28,10 +28,10 @@ def index(id_offer):
   sale_stage_id = my_dict['sale_stage_id']
   
   try:
-    name_full = my_dict['name'] + ' ' + my_dict['surname']
+    name_full = my_dict['0']['name'] + ' ' + my_dict['0']['surname']
   except:
     try:
-      name_full = my_dict['name']
+      name_full = my_dict['0']['name']
     except:
       name_full = 'Отсутствует'
 
