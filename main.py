@@ -22,6 +22,7 @@ def index(id_offer):
   result = php('byid.php', id_offer)
   print(result)
   my_dict = json.loads(result)
+  print(my_dict)
 
   customer_id = my_dict['customers_id']
   sale_stage_id = my_dict['sale_stage_id']
