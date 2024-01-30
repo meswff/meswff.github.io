@@ -34,13 +34,13 @@ def index(id_offer):
       name_full = my_dict['name']
     except:
       name_full = 'Отсутствует'
+
   try:
-    print(my_dict['phone'])
-    phone = my_dict['phone']['0']['phone']
+    phone = my_dict['0']['phone'][0]['phone']
   except:
     phone = 'Отсутствует'
   try:
-    email = my_dict['email'][0]['mail']
+    email = my_dict['0']['email'][0]['mail']
   except:
     email = 'Отсутствует'
   
