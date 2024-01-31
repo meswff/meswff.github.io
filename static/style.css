@@ -79,3 +79,9 @@ width: 310px;
     display: grid;
     margin-top: 10px;
 }
+
+.b1 {
+    background: navy; /* Синий цвет фона */ 
+    color: white; /* Белые буквы */ 
+    font-size: 9pt; /* Размер шрифта в пунктах */
+   }
