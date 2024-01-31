@@ -12,27 +12,27 @@
   <body>
     <div class="main">
         <div class="info_id">
-            <div>Name:<h4>{{user_username}}</h4></div>
+            <div>Имя:<h4>{{user_username}}</h4></div>
             <hr width="100%" color="black" size="3px"/>
-            <div>Lead ID:<h4>{{user_id}}</h4></div>
+            <div>ID контакта:<h4>{{user_id}}</h4></div>
         </div>
 
         <div class="info_client">
-            <div>Sale ID:<h4>{{sale_id}}</h4></div>
+            <div>ID Сделки:<h4>{{sale_id}}</h4></div>
             <hr width="100%" color="black" size="3px"/>
-            <div>Phone:<h4>+{{user_phone}}</h4></div>
+            <div>Телефон:<h4>+{{user_phone}}</h4></div>
             <div> <a href="https://api.whatsapp.com/send?phone={{user_phone}}" target="_blank">
               <button>Перейти в whatsapp</button></a>
             </div>
             <hr width="100%" color="black" size="3px"/>
             <div>E-mail:<h4>{{user_mail}}</h4></div>
             <hr width="100%" color="black" size="3px"/>
-            <div>Status:<h4>{{user_status}}</h4></div>
+            <div>Стадия сделки:<h4>{{user_status}}</h4></div>
         </div>
 
         <div class="form_div">
           <form>
-            <div>Change status:</div>
+            <div>Внести изменения:</div>
             <p><select name="select" size="1" onchange="show()" id="statusSelect">
              <option selected value="s1">{{lead_status}}</option>
              <option value="66">NEW</option>
@@ -49,12 +49,12 @@
         </div>
 
       <form class="other_div" id="dataForm">
-          <label for="date">Date/Time</label>
+          <label for="date">Укажите дату и время</label>
           <input type="datetime-local" id="date" name="date"/>
     
           <hr width="100%" color="black" size="3px"/>
     
-          <label for="comment">Comments</label>
+          <label for="comment">Комментарии и замечания</label>
           <input type="text" id="comment" name="name" required minlength="4" maxlength="100" size='10'/>
     
           <div class="button" onclick="submitForm()">
