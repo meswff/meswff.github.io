@@ -4,7 +4,7 @@ function show() {
   }
 
   function submitForm() {
-    var selectedSaleId = window.location.pathname.value;
+    var selectedSaleId = window.location.pathname;
     var selectedStatus = document.getElementById("statusSelect").value;
     var selectedDate = document.getElementById('date').value;
     var selectedComment = document.getElementById('comment').value;
