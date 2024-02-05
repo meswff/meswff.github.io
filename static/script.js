@@ -30,5 +30,6 @@ function show() {
     .catch(error => {
         console.error('Ошибка:', error);
     });
+    alert(data['status'])
     alert('Данные отправлены в CRM')
 }
