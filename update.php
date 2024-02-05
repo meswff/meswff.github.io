@@ -22,6 +22,7 @@ $insert = $api->insertEvent(array(
         ),
         'type_id' => '2',
         'connections' => array(
+	    'substance_summary' => 'Обращения',
             'object_type' => 'crm_sale',
             'object_id' => $argv[1]
         )
