@@ -9,10 +9,8 @@ function show() {
     var selectedDate = document.getElementById('date').value;
     var selectedComment = document.getElementById('comment').value;
 
-    var selectedStatus = selectedStatus.split('/')
-
     var data = {
-        status: selectedStatus[2],
+        status: selectedStatus,
         date: selectedDate,
         comment: selectedComment,
         saleid: selectedSaleId
