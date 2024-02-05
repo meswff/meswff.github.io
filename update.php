@@ -47,7 +47,7 @@ $insert_status = $api->getEventsFilter(array(
 
 
 print_r($insert);
-print_r(&insert_status);
+print_r($insert_status);
 
 
 ?>
