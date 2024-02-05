@@ -4,10 +4,12 @@ function show() {
   }
 
   function submitForm() {
-    var selectedSaleId = window.location.pathname.split('/')
+    var selectedSaleId = window.location.pathname.value;
     var selectedStatus = document.getElementById("statusSelect").value;
     var selectedDate = document.getElementById('date').value;
     var selectedComment = document.getElementById('comment').value;
+
+    var selectedStatus = selectedStatus.split('/')
 
     var data = {
         status: selectedStatus[2],
