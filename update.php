@@ -22,10 +22,12 @@ $insert = $api->insertEvent(array(
         ),
         'type_id' => '2',
         'connections' => array(
-	    'substance_summary' => 'Обращения',
-            'object_type' => 'crm_sale',
-            'object_id' => $argv[1]
-        )
+            '0' => array(
+                'substance_summary' => 'Обращения',
+                'object_type' => 'crm_sale',
+                'object_id' => $argv[1]
+                ),
+            ), 
     ),
 ));
 
@@ -36,14 +38,16 @@ $insert_status = $api->updateSales(array(
 	),  
 ));
 
-#$evnt_id = (int)$argv[1] - 54471;
+$evnt_id = (int)$argv[1] - 54471;
 
-/*$insert_status = $api->getEventsFilter(array( 
+$insert_status = $api->getEventsFilter(array( 
     'event_id' => '33366',
 	),  
-);*/
+);
+
 
 print_r($insert);
-print_r($insert_status);
+print_r(&insert_status);
+
 
 ?>
