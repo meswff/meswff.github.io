@@ -4,13 +4,13 @@ function show() {
   }
 
   function submitForm() {
-    var selectedSaleId = window.location.pathname;
+    var selectedSaleId = window.location.pathname.split('/');
     var selectedStatus = document.getElementById("statusSelect").value;
     var selectedDate = document.getElementById('date').value;
     var selectedComment = document.getElementById('comment').value;
 
     var data = {
-        status: selectedStatus,
+        status: selectedStatus[2],
         date: selectedDate,
         comment: selectedComment,
         saleid: selectedSaleId
@@ -30,6 +30,6 @@ function show() {
     .catch(error => {
         console.error('Ошибка:', error);
     });
-    alert(selectedStatus)
+    alert(selectedStatus[2])
     alert('Данные отправлены в CRM')
 }
