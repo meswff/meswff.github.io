@@ -13,7 +13,7 @@ function show() {
         status: selectedStatus,
         date: selectedDate,
         comment: selectedComment,
-        saleid: selectedSaleId[2]
+        saleid: selectedSaleId[3]
     };
 
     fetch('/process_data', {
@@ -30,6 +30,6 @@ function show() {
     .catch(error => {
         console.error('Ошибка:', error);
     });
-    alert(selectedSaleId[2])
+    alert(selectedSaleId[3])
     alert('Данные отправлены в CRM')
 }
