@@ -10,10 +10,10 @@ function show() {
     var selectedComment = document.getElementById('comment').value;
 
     var data = {
-        status: selectedStatus[2],
+        status: selectedStatus,
         date: selectedDate,
         comment: selectedComment,
-        saleid: selectedSaleId
+        saleid: selectedSaleId[2]
     };
 
     fetch('/process_data', {
@@ -30,6 +30,6 @@ function show() {
     .catch(error => {
         console.error('Ошибка:', error);
     });
-    alert(selectedStatus[2])
+    alert(selectedSaleId[2])
     alert('Данные отправлены в CRM')
 }
