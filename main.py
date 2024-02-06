@@ -24,6 +24,7 @@ def index(id_crm, id_user, id_offer):
   my_dict = json.loads(result)
   print(my_dict)
 
+  employee_id = my_dict['employee_id']
   customer_id = my_dict['customers_id']
   sale_stage_id = my_dict['sale_stage_id']
   
@@ -70,12 +71,10 @@ def index(id_crm, id_user, id_offer):
     '72': 'Дубль/брак'
   }
   
-  userid = php('workers.php', str(id_user))
-  print(userid)
   try:
-    dict = json.loads(userid)
-    print(int(dict))
-    if int(dict) == int(id_crm):
+    result = php('byid.php', id_offer)
+    my_dict = json.loads(result)
+    if int(my_dict['employee_id']) == int(employee_id):
       if statuses[sale_stage_id] == 'NEW' or statuses[sale_stage_id] == 'Звонок совершен' or statuses[sale_stage_id] == 'Собеседование назначено' or statuses[sale_stage_id] == 'Собеседование проведено' or statuses[sale_stage_id] == 'Обучение началось' or statuses[sale_stage_id] == 'Остался через 14 дней' or statuses[sale_stage_id] == 'Остался через 30 дней' or statuses[sale_stage_id] == 'Приняли на работу' or statuses[sale_stage_id] == 'Закрыли сделку':
         return render_template('index_job.html', user_username=name_full, user_id=customer_id, user_info=statuses[sale_stage_id], user_ip='В обработке', user_phone=phone, user_mail=email, user_status=statuses[sale_stage_id], lead_status=statuses[sale_stage_id], sale_id=id_offer, user_comment=my_dict['comment'])
       else:
