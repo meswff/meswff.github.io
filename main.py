@@ -19,7 +19,6 @@ def php_argv(script_path, argument, argument2, argument3, argument4):
 
 @app.route('/<id_crm>/<id_user>/<id_offer>')
 def index(id_crm, id_user, id_offer):
-  return render_template('101.html')
   result = php('byid.php', id_offer)
   print(result)
   my_dict = json.loads(result)
