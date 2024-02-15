@@ -27,10 +27,10 @@
 	
 	
 	if (!is_array($res_customer)) {
-		$json_byid = json_encode(array_merge($data['0'], $res_comment['data']['88662']['0']));
+		$json_byid = json_encode(array_merge($data['0'], $res_comment['data'][$argv[1]]['0']));
 	} else {
 		$merge = array_merge($data['0'], $res_customer['data']['list']);
-		$json_byid = json_encode(array_merge($merge, $res_comment['data']['88662']['0']));
+		$json_byid = json_encode(array_merge($merge, $res_comment['data'][$argv[1]]['0']));
 	}
 
 	print_r($json_byid);
