@@ -30,6 +30,5 @@ function show() {
     .catch(error => {
         console.error('Ошибка:', error);
     });
-    alert(selectedSaleId[3])
     alert('Данные отправлены в CRM')
 }
