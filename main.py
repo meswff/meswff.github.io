@@ -24,8 +24,16 @@ def index(id_crm, id_user, id_offer):
   my_dict = json.loads(result)
   print(my_dict)
 
-  employee_id = my_dict['employee_id']
-  customer_id = my_dict['customers_id']
+  try:
+    employee_id = my_dict['employee_id']
+  except:
+    employee_id = 'Отсутствует'
+
+  try:
+    customer_id = my_dict['customers_id']
+  except:
+    customer_id = 'Отсутствует'
+    
   sale_stage_id = my_dict['sale_stage_id']
   
   try:
