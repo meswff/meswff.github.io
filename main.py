@@ -121,13 +121,19 @@ def process_data():
   return jsonify({'result': data})
 
 
-async def send_message_async(token, chat_id, message):
-    bot = Bot(token)
+message_sent = False 
+
+async def send_message_async(chat_id, message):
+    bot = Bot('6509666991:AAGYPMfmzqeo-wonBzjY4gB0CVgUOLsVW3w')
     await bot.send_message(chat_id, message)
 
-@app.route('/post/<token>/<chat_id>/<message>')
-def send_message_sync(token, chat_id, message):
-    asyncio.run(send_message_async(token, chat_id, message))
+@app.route('/post/<chat_id>/<message>')
+def send_message_sync(chat_id, message):
+    global message_sent
+    if not message_sent:
+        asyncio.run(send_message_async(chat_id, message))
+        message_sent = True
+    return "Message sent successfully"
 
 async def main():
     await bot.delete_webhook()
