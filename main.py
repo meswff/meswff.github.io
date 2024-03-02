@@ -9,6 +9,7 @@ from multiprocessing import Process
 
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
 
 app = Flask(__name__)
 
@@ -123,15 +124,23 @@ def process_data():
 
 message_sent = False 
 
-async def send_message_async(chat_id, message):
+async def send_message_async(telegram_id, employee_id, id_offer):
     bot = Bot('6509666991:AAGYPMfmzqeo-wonBzjY4gB0CVgUOLsVW3w')
-    await bot.send_message(chat_id, message)
+    def button():
+      buttons: list = [
+          [
+              InlineKeyboardButton(text='Перейти в CRM', web_app=WebAppInfo(url=f'https://2471028-yo82697.twc1.net/{telegram_id}/{int(employee_id)}/{id_offer}'))
+          ]
+      ]
+      keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
+      return keyboard
+    await bot.send_message(telegram_id, text=f'Вас назначили ответственным в сделке {id_offer}', reply_markup=button())
 
-@app.route('/post/<chat_id>/<message>')
-def send_message_sync(chat_id, message):
+@app.route('/post/<telegram_id>/<employee_id>/<id_offer>')
+def send_message_sync(telegram_id, employee_id, id_offer):
     global message_sent
     if not message_sent:
-        asyncio.run(send_message_async(chat_id, message))
+        asyncio.run(send_message_async(telegram_id, employee_id, id_offer))
         message_sent = True
     return "Message sent successfully"
 
