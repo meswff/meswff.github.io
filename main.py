@@ -4,6 +4,10 @@ import subprocess
 import json
 import datetime
 import time
+import asyncio
+
+from aiogram import Bot, Dispatcher, types
+from aiogram.filters import Command
 
 app = Flask(__name__)
 
@@ -115,6 +119,14 @@ def process_data():
 
   return jsonify({'result': data})
 
+
+async def send_message_async(token, chat_id, message):
+    bot = Bot(token)
+    await bot.send_message(chat_id, message)
+
+@app.route('/post/<token>/<chat_id>/<message>')
+def send_message_sync(token, chat_id, message):
+    asyncio.run(send_message_async(token, chat_id, message))
 
 async def main():
     await bot.delete_webhook()
