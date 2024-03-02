@@ -7,6 +7,9 @@ import time
 
 app = Flask(__name__)
 
+bot = Bot("6509666991:AAGYPMfmzqeo-wonBzjY4gB0CVgUOLsVW3w")
+dp = Dispatcher()
+
 def php(script_path, argument):
   p = subprocess.Popen(['php', script_path, argument], stdout=subprocess.PIPE)
   result = p.communicate()[0]
@@ -111,6 +114,17 @@ def process_data():
   php_argv('update.php', str(saleid), str(data['status']), str(unix_time), str(data['comment']))
 
   return jsonify({'result': data})
+
+
+async def main():
+    await bot.delete_webhook()
+    await dp.start_polling(bot, handle_as_tasks=True)
+
+@app.get(rule='/start_bot')
+def start_bot():
+    bot_process = Process(target=asyncio.run(main()))
+    bot_process.start()
+    return str(bot_process.pid)
 
 if __name__ == '__main__':
   app.run(ssl_context='adhoc')
