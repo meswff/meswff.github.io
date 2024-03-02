@@ -144,13 +144,13 @@ def send_message_sync(telegram_id, employee_id, id_offer):
         message_sent = True
     return "Message sent successfully"
 
-async def main():
+async def main_bot():
     await bot.delete_webhook()
     await dp.start_polling(bot, handle_as_tasks=True)
 
 @app.get(rule='/start_bot')
 def start_bot():
-    bot_process = Process(target=asyncio.run(main()))
+    bot_process = Process(target=asyncio.run(main_bot()))
     bot_process.start()
     return str(bot_process.pid)
 
