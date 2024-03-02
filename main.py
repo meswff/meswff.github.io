@@ -13,8 +13,7 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
 
 app = Flask(__name__)
 
-bot = Bot("6509666991:AAGYPMfmzqeo-wonBzjY4gB0CVgUOLsVW3w")
-dp = Dispatcher()
+
 
 def php(script_path, argument):
   p = subprocess.Popen(['php', script_path, argument], stdout=subprocess.PIPE)
