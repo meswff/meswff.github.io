@@ -43,8 +43,10 @@ def index(id_crm, id_user, id_offer):
       customer_id = my_dict['customers_id']
     except:
       customer_id = 'Отсутствует'
-      
-    sale_stage_id = my_dict['sale_stage_id']
+    try:
+      sale_stage_id = my_dict['sale_stage_id']
+    except:
+      return 'Ошибка получения стадии сделки'
     
     try:
       name_full = my_dict['0']['name'] + ' ' + my_dict['0']['surname']
