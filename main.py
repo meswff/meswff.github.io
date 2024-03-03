@@ -169,10 +169,7 @@ async def send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_d
 
 @app.route('/get/<telegram_id>/<employee_id>/<id_offer>/<stage_deal>')
 def send_message_async_flask(telegram_id, employee_id, id_offer, stage_deal):
-    global message_sent
-    if not message_sent:
-        asyncio.run(send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_deal))
-        message_sent = True
+    asyncio.run(send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_deal))
     return "Message sent successfully"
 
 
@@ -180,10 +177,7 @@ def send_message_async_flask(telegram_id, employee_id, id_offer, stage_deal):
 
 @app.route('/post/<telegram_id>/<employee_id>/<id_offer>')
 def send_message_sync(telegram_id, employee_id, id_offer):
-    global message_sent
-    if not message_sent:
-        asyncio.run(send_message_async(telegram_id, employee_id, id_offer))
-        message_sent = True
+    asyncio.run(send_message_async(telegram_id, employee_id, id_offer))
     return "Message sent successfully"
 
 async def main_bot():
