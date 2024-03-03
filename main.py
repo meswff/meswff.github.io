@@ -135,6 +135,49 @@ async def send_message_async(telegram_id, employee_id, id_offer):
       return keyboard
     await bot.send_message(telegram_id, text=f'Вас назначили ответственным в сделке {id_offer}', reply_markup=button())
 
+
+
+
+
+async def send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_deal):
+    bot = Bot('6509666991:AAGYPMfmzqeo-wonBzjY4gB0CVgUOLsVW3w')
+    def button():
+      buttons: list = [
+          [
+              InlineKeyboardButton(text='Перейти в CRM', web_app=WebAppInfo(url=f'https://2471028-yo82697.twc1.net/{telegram_id}/{employee_id}/{id_offer}'))
+          ]
+      ]
+      keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
+      return keyboard
+    if sale_stage_id == '66' or sale_stage_id == '67' or sale_stage_id == '64' or sale_stage_id == '29' or sale_stage_id == '30' or sale_stage_id == '68' or sale_stage_id == '69' or sale_stage_id == '31' or sale_stage_id == '32':
+      try:
+          textf = f'Новая сделка - Подбор персонала\n\nID сделки: {id_offer}\nСтадия сделки: {sale_stage_id}'
+          await bot.send_message(chat_id=id_dict, text=textf, reply_markup=button())
+      except:
+          pass
+    elif sale_stage_id == '74' or sale_stage_id == '75' or sale_stage_id == '77' or sale_stage_id == '78' or sale_stage_id == '79' or sale_stage_id == '80' or sale_stage_id == '81' or sale_stage_id == '82' or sale_stage_id == '84' or sale_stage_id == '83':
+      try:
+          textf = f'Новая сделка - Работа с базой\n\nID сделки: {id_offer}\nСтадия сделки: {sale_stage_id}'
+          await bot.send_message(chat_id=id_dict, text=textf, reply_markup=button())
+      except:
+          pass
+    else:
+      try:
+          textf = f'Новая сделка - Обращение покупателя\n\nID сделки: {id_offer}\nСтадия сделки: {sale_stage_id}'
+          await bot.send_message(chat_id=id_dict, text=textf, reply_markup=button())
+      except:
+          pass
+
+@app.route('/get/<telegram_id>/<employee_id>/<id_offer>/<stage_deal>')
+def send_message_sync(telegram_id, employee_id, id_offer):
+    global message_sent
+    if not message_sent:
+        asyncio.run(send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_deal))
+        message_sent = True
+    return "Message sent successfully"
+
+
+
 @app.route('/post/<telegram_id>/<employee_id>/<id_offer>')
 def send_message_sync(telegram_id, employee_id, id_offer):
     global message_sent
