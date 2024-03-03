@@ -32,7 +32,7 @@ def php_argv(script_path, argument, argument2, argument3, argument4):
 def index(id_crm, id_user, id_offer):
   if id_offer != 'highLightTitle.png':
     result = get_info_about_sale(int(id_offer))
-  
+    print(result)
     employee_id = result['employee_id']
     print(employee_id)
     customer_id = result['customer_id']
