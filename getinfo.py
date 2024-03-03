@@ -55,5 +55,5 @@ def get_info_about_sale(sale_id):
             'text': text,
             'email': email
         }
-    except:
-        return 'Ошибка при попытке получить данные'
+    except Exception as E:
+        return E
