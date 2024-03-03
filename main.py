@@ -149,7 +149,7 @@ async def send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_d
       ]
       keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
       return keyboard
-    if id_offer != 'highLightTitle.png':
+    if stage_deal != 'highLightTitle.png':
       if stage_deal == '66' or stage_deal == '67' or stage_deal == '64' or stage_deal == '29' or stage_deal == '30' or stage_deal == '68' or stage_deal == '69' or stage_deal == '31' or stage_deal == '32':
         try:
             textf = f'Новая сделка - Подбор персонала\n\nID сделки: {id_offer}\nСтадия сделки: {stage_deal}'
