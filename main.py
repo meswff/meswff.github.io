@@ -149,27 +149,27 @@ async def send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_d
       ]
       keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
       return keyboard
-    if sale_stage_id == '66' or sale_stage_id == '67' or sale_stage_id == '64' or sale_stage_id == '29' or sale_stage_id == '30' or sale_stage_id == '68' or sale_stage_id == '69' or sale_stage_id == '31' or sale_stage_id == '32':
+    if stage_deal == '66' or stage_deal == '67' or stage_deal == '64' or stage_deal == '29' or stage_deal == '30' or stage_deal == '68' or stage_deal == '69' or stage_deal == '31' or stage_deal == '32':
       try:
-          textf = f'Новая сделка - Подбор персонала\n\nID сделки: {id_offer}\nСтадия сделки: {sale_stage_id}'
-          await bot.send_message(chat_id=id_dict, text=textf, reply_markup=button())
+          textf = f'Новая сделка - Подбор персонала\n\nID сделки: {id_offer}\nСтадия сделки: {stage_deal}'
+          await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button())
       except:
           pass
-    elif sale_stage_id == '74' or sale_stage_id == '75' or sale_stage_id == '77' or sale_stage_id == '78' or sale_stage_id == '79' or sale_stage_id == '80' or sale_stage_id == '81' or sale_stage_id == '82' or sale_stage_id == '84' or sale_stage_id == '83':
+    elif stage_deal == '74' or stage_deal == '75' or stage_deal == '77' or stage_deal == '78' or stage_deal == '79' or stage_deal == '80' or stage_deal == '81' or stage_deal == '82' or stage_deal == '84' or stage_deal == '83':
       try:
-          textf = f'Новая сделка - Работа с базой\n\nID сделки: {id_offer}\nСтадия сделки: {sale_stage_id}'
-          await bot.send_message(chat_id=id_dict, text=textf, reply_markup=button())
+          textf = f'Новая сделка - Работа с базой\n\nID сделки: {id_offer}\nСтадия сделки: {stage_deal}'
+          await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button())
       except:
           pass
     else:
       try:
-          textf = f'Новая сделка - Обращение покупателя\n\nID сделки: {id_offer}\nСтадия сделки: {sale_stage_id}'
-          await bot.send_message(chat_id=id_dict, text=textf, reply_markup=button())
+          textf = f'Новая сделка - Обращение покупателя\n\nID сделки: {id_offer}\nСтадия сделки: {stage_deal}'
+          await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button())
       except:
           pass
 
 @app.route('/get/<telegram_id>/<employee_id>/<id_offer>/<stage_deal>')
-def send_message_sync(telegram_id, employee_id, id_offer):
+def send_message_sync(telegram_id, employee_id, id_offer, stage_deal):
     global message_sent
     if not message_sent:
         asyncio.run(send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_deal))
