@@ -169,18 +169,18 @@ async def send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_d
 
 @app.route('/get/<telegram_id>/<employee_id>/<id_offer>/<stage_deal>')
 def send_message_async_flask(telegram_id, employee_id, id_offer, stage_deal):
-  for i in range(0, 1):
-    asyncio.run(send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_deal))
-    return "Message sent successfully"
+  asyncio.run(send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_deal))
+  return "Message sent successfully"
+  exit()
 
 
 
 
 @app.route('/post/<telegram_id>/<employee_id>/<id_offer>')
 def send_message_sync(telegram_id, employee_id, id_offer):
-  for i in range(0, 1):
-    asyncio.run(send_message_async(telegram_id, employee_id, id_offer))
-    return "Message sent successfully"
+  asyncio.run(send_message_async(telegram_id, employee_id, id_offer))
+  return "Message sent successfully"
+  exit()
 
 async def main_bot():
     await bot.delete_webhook()
