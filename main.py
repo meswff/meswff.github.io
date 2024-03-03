@@ -34,6 +34,7 @@ def index(id_crm, id_user, id_offer):
     result = get_info_about_sale(int(id_offer))
   
     employee_id = result['employee_id']
+    print(employee_id)
     customer_id = result['customer_id']
     sale_stage_id = result['sale_stage_id']
     name_full = result['name']
