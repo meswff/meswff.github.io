@@ -2,22 +2,7 @@ import requests
 import json
 
 
-def get_info_about_sale():
-    url = 'http://aires.astoria-tula.ru:81/sharedapi/sales/getbychangestage'
-    headers = {
-        'Content-Type': 'application/x-www-form-urlencoded'
-    }
-    data = {
-        'apikey': '21d1c8300ca07c06bf8f3aac3c16c275',
-        'params[date_start]': '2024-02-15',
-        'params[date_end]': '2030-01-01'
-    }
-
-    response = requests.post(url, headers=headers, data=data)
-
-    my_dict = json.loads(response.text)
-    sale_id = my_dict['data']['list'][-1]['sale_id']
-
+def get_info_about_sale(sale_id):
     url = 'http://aires.astoria-tula.ru:81/sharedapi/sales/filter'
     headers = {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -40,7 +25,6 @@ def get_info_about_sale():
         }
     except:
         return 'Ошибка при попытке получить данные'
-
 
 
 def get_info_about_worker(employee_id):
