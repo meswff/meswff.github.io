@@ -7,6 +7,8 @@ import time
 import asyncio
 from multiprocessing import Process
 
+from getinfo import get_info_about_sale
+
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
@@ -29,41 +31,15 @@ def php_argv(script_path, argument, argument2, argument3, argument4):
 @app.route('/<id_crm>/<id_user>/<id_offer>')
 def index(id_crm, id_user, id_offer):
   if id_offer != 'highLightTitle.png':
-    result = php('byid.php', int(id_offer))
-    my_dict = json.loads(result)
+    result = get_info_about_sale(int(id_offer))
   
-    try:
-      employee_id = my_dict['employee_id']
-    except:
-      employee_id = 'Отсутствует'
-  
-    try:
-      customer_id = my_dict['customers_id']
-    except:
-      customer_id = 'Отсутствует'
-    sale_stage_id = my_dict['sale_stage_id']
-    
-    try:
-      name_full = my_dict['0']['name'] + ' ' + my_dict['0']['surname']
-    except:
-      try:
-        name_full = my_dict['0']['name']
-      except:
-        name_full = 'Отсутствует'
-  
-    try:
-      phone = my_dict['0']['phone'][0]['phone']
-    except:
-      phone = 'Отсутствует'
-    try:
-      email = my_dict['0']['email'][0]['mail']
-    except:
-      email = 'Отсутствует'
-  
-    try:
-      client_text = my_dict['text']
-    except:
-      client_text = 'Отсутствует'
+    employee_id = result['employee_id']
+    customer_id = result['customer_id']
+    sale_stage_id = result['sale_stage_id']
+    name_full = result['name']
+    phone = result['phone']
+    email = result['email']
+
     
     statuses = {
       '66': 'NEW',
@@ -94,9 +70,9 @@ def index(id_crm, id_user, id_offer):
     try:
       if  int(employee_id) == int(id_user):
         if statuses[sale_stage_id] == 'NEW' or statuses[sale_stage_id] == 'Звонок совершен' or statuses[sale_stage_id] == 'Собеседование назначено' or statuses[sale_stage_id] == 'Собеседование проведено' or statuses[sale_stage_id] == 'Обучение началось' or statuses[sale_stage_id] == 'Остался через 14 дней' or statuses[sale_stage_id] == 'Остался через 30 дней' or statuses[sale_stage_id] == 'Приняли на работу' or statuses[sale_stage_id] == 'Закрыли сделку':
-          return render_template('index_job.html', user_username=name_full, user_id=customer_id, user_info=statuses[sale_stage_id], user_ip='В обработке', user_phone=phone, user_mail=email, user_status=statuses[sale_stage_id], lead_status=statuses[sale_stage_id], sale_id=id_offer, user_comment=my_dict['comment'], client_text=client_text)
+          return render_template('index_job.html', user_username=name_full, user_id=customer_id, user_info=statuses[sale_stage_id], user_ip='В обработке', user_phone=phone, user_mail=email, user_status=statuses[sale_stage_id], lead_status=statuses[sale_stage_id], sale_id=id_offer, user_comment=my_dict['comment'])
         else:
-          return render_template('index_client.html', user_username=name_full, user_id=customer_id, user_info=statuses[sale_stage_id], user_ip='В обработке', user_phone=phone, user_mail=email, user_status=statuses[sale_stage_id], lead_status=statuses[sale_stage_id], sale_id=id_offer, user_comment=my_dict['comment'], client_text=client_text, data_value='2017-06-01T08:30')
+          return render_template('index_client.html', user_username=name_full, user_id=customer_id, user_info=statuses[sale_stage_id], user_ip='В обработке', user_phone=phone, user_mail=email, user_status=statuses[sale_stage_id], lead_status=statuses[sale_stage_id], sale_id=id_offer, user_comment=my_dict['comment'], data_value='2017-06-01T08:30')
       else:
         return render_template('403.html'), 403
     except:
