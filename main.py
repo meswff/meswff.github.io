@@ -144,7 +144,7 @@ async def send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_d
         except:
             pass
 
-@app.route('/get/<telegram_id>/<employee_id>/<id_offer>/<stage_deal>')
+@app.route('/<telegram_id>/<employee_id>/<id_offer>/<stage_deal>/get')
 def send_message_async_flask(telegram_id, employee_id, id_offer, stage_deal):
   asyncio.run(send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_deal))
   return "Message sent successfully"
