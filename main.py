@@ -149,24 +149,25 @@ async def send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_d
       ]
       keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
       return keyboard
-    if stage_deal == '66' or stage_deal == '67' or stage_deal == '64' or stage_deal == '29' or stage_deal == '30' or stage_deal == '68' or stage_deal == '69' or stage_deal == '31' or stage_deal == '32':
-      try:
-          textf = f'Новая сделка - Подбор персонала\n\nID сделки: {id_offer}\nСтадия сделки: {stage_deal}'
-          await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button())
-      except:
-          pass
-    elif stage_deal == '74' or stage_deal == '75' or stage_deal == '77' or stage_deal == '78' or stage_deal == '79' or stage_deal == '80' or stage_deal == '81' or stage_deal == '82' or stage_deal == '84' or stage_deal == '83':
-      try:
-          textf = f'Новая сделка - Работа с базой\n\nID сделки: {id_offer}\nСтадия сделки: {stage_deal}'
-          await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button())
-      except:
-          pass
-    else:
-      try:
-          textf = f'Новая сделка - Обращение покупателя\n\nID сделки: {id_offer}\nСтадия сделки: {stage_deal}'
-          await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button())
-      except:
-          pass
+    if id_offer != 'highLightTitle.png':
+      if stage_deal == '66' or stage_deal == '67' or stage_deal == '64' or stage_deal == '29' or stage_deal == '30' or stage_deal == '68' or stage_deal == '69' or stage_deal == '31' or stage_deal == '32':
+        try:
+            textf = f'Новая сделка - Подбор персонала\n\nID сделки: {id_offer}\nСтадия сделки: {stage_deal}'
+            await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button())
+        except:
+            pass
+      elif stage_deal == '74' or stage_deal == '75' or stage_deal == '77' or stage_deal == '78' or stage_deal == '79' or stage_deal == '80' or stage_deal == '81' or stage_deal == '82' or stage_deal == '84' or stage_deal == '83':
+        try:
+            textf = f'Новая сделка - Работа с базой\n\nID сделки: {id_offer}\nСтадия сделки: {stage_deal}'
+            await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button())
+        except:
+            pass
+      else:
+        try:
+            textf = f'Новая сделка - Обращение покупателя\n\nID сделки: {id_offer}\nСтадия сделки: {stage_deal}'
+            await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button())
+        except:
+            pass
 
 @app.route('/get/<telegram_id>/<employee_id>/<id_offer>/<stage_deal>')
 def send_message_async_flask(telegram_id, employee_id, id_offer, stage_deal):
