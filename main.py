@@ -28,81 +28,82 @@ def php_argv(script_path, argument, argument2, argument3, argument4):
 
 @app.route('/<id_crm>/<id_user>/<id_offer>')
 def index(id_crm, id_user, id_offer):
-  result = php('byid.php', id_offer)
-  print(result)
-  my_dict = json.loads(result)
-  print(my_dict)
-
-  try:
-    employee_id = my_dict['employee_id']
-  except:
-    employee_id = 'Отсутствует'
-
-  try:
-    customer_id = my_dict['customers_id']
-  except:
-    customer_id = 'Отсутствует'
-    
-  sale_stage_id = my_dict['sale_stage_id']
+  if id_offer != 'highLightTitle.png':
+    result = php('byid.php', id_offer)
+    print(result)
+    my_dict = json.loads(result)
+    print(my_dict)
   
-  try:
-    name_full = my_dict['0']['name'] + ' ' + my_dict['0']['surname']
-  except:
     try:
-      name_full = my_dict['0']['name']
+      employee_id = my_dict['employee_id']
     except:
-      name_full = 'Отсутствует'
-
-  try:
-    phone = my_dict['0']['phone'][0]['phone']
-  except:
-    phone = 'Отсутствует'
-  try:
-    email = my_dict['0']['email'][0]['mail']
-  except:
-    email = 'Отсутствует'
-
-  try:
-    client_text = my_dict['text']
-  except:
-    client_text = 'Отсутствует'
+      employee_id = 'Отсутствует'
   
-  statuses = {
-    '66': 'NEW',
-    '67': 'Звонок совершен',
-    '64': 'Собеседование назначено',
-    '29': 'Собеседование проведено',
-    '30': 'Обучение началось',
-    '68': 'Остался через 14 дней',
-    '69': 'Остался через 30 дней',
-    '31': 'Приняли на работу',
-    '32': 'Закрыли сделку',
+    try:
+      customer_id = my_dict['customers_id']
+    except:
+      customer_id = 'Отсутствует'
+      
+    sale_stage_id = my_dict['sale_stage_id']
     
-    '55': 'Новый',
-    '54': 'Неотвеченный',
-    '56': 'Уточненный',
-    '57': 'Отложенный спрос',
-    '58': 'Приглашение',
-    '59': 'Встреча',
-    '65': 'Без договора',
-    '60': 'Договор',
-    '61': 'Задаток',
-    '62': 'Закрытие сделки',
-    '63': 'Отказ',
-    '73': 'АВТООБЗВОН',
-    '72': 'Дубль/брак'
-  }
+    try:
+      name_full = my_dict['0']['name'] + ' ' + my_dict['0']['surname']
+    except:
+      try:
+        name_full = my_dict['0']['name']
+      except:
+        name_full = 'Отсутствует'
   
-  try:
-    if  int(employee_id) == int(id_user):
-      if statuses[sale_stage_id] == 'NEW' or statuses[sale_stage_id] == 'Звонок совершен' or statuses[sale_stage_id] == 'Собеседование назначено' or statuses[sale_stage_id] == 'Собеседование проведено' or statuses[sale_stage_id] == 'Обучение началось' or statuses[sale_stage_id] == 'Остался через 14 дней' or statuses[sale_stage_id] == 'Остался через 30 дней' or statuses[sale_stage_id] == 'Приняли на работу' or statuses[sale_stage_id] == 'Закрыли сделку':
-        return render_template('index_job.html', user_username=name_full, user_id=customer_id, user_info=statuses[sale_stage_id], user_ip='В обработке', user_phone=phone, user_mail=email, user_status=statuses[sale_stage_id], lead_status=statuses[sale_stage_id], sale_id=id_offer, user_comment=my_dict['comment'], client_text=client_text)
+    try:
+      phone = my_dict['0']['phone'][0]['phone']
+    except:
+      phone = 'Отсутствует'
+    try:
+      email = my_dict['0']['email'][0]['mail']
+    except:
+      email = 'Отсутствует'
+  
+    try:
+      client_text = my_dict['text']
+    except:
+      client_text = 'Отсутствует'
+    
+    statuses = {
+      '66': 'NEW',
+      '67': 'Звонок совершен',
+      '64': 'Собеседование назначено',
+      '29': 'Собеседование проведено',
+      '30': 'Обучение началось',
+      '68': 'Остался через 14 дней',
+      '69': 'Остался через 30 дней',
+      '31': 'Приняли на работу',
+      '32': 'Закрыли сделку',
+      
+      '55': 'Новый',
+      '54': 'Неотвеченный',
+      '56': 'Уточненный',
+      '57': 'Отложенный спрос',
+      '58': 'Приглашение',
+      '59': 'Встреча',
+      '65': 'Без договора',
+      '60': 'Договор',
+      '61': 'Задаток',
+      '62': 'Закрытие сделки',
+      '63': 'Отказ',
+      '73': 'АВТООБЗВОН',
+      '72': 'Дубль/брак'
+    }
+    
+    try:
+      if  int(employee_id) == int(id_user):
+        if statuses[sale_stage_id] == 'NEW' or statuses[sale_stage_id] == 'Звонок совершен' or statuses[sale_stage_id] == 'Собеседование назначено' or statuses[sale_stage_id] == 'Собеседование проведено' or statuses[sale_stage_id] == 'Обучение началось' or statuses[sale_stage_id] == 'Остался через 14 дней' or statuses[sale_stage_id] == 'Остался через 30 дней' or statuses[sale_stage_id] == 'Приняли на работу' or statuses[sale_stage_id] == 'Закрыли сделку':
+          return render_template('index_job.html', user_username=name_full, user_id=customer_id, user_info=statuses[sale_stage_id], user_ip='В обработке', user_phone=phone, user_mail=email, user_status=statuses[sale_stage_id], lead_status=statuses[sale_stage_id], sale_id=id_offer, user_comment=my_dict['comment'], client_text=client_text)
+        else:
+          return render_template('index_client.html', user_username=name_full, user_id=customer_id, user_info=statuses[sale_stage_id], user_ip='В обработке', user_phone=phone, user_mail=email, user_status=statuses[sale_stage_id], lead_status=statuses[sale_stage_id], sale_id=id_offer, user_comment=my_dict['comment'], client_text=client_text, data_value='2017-06-01T08:30')
       else:
-        return render_template('index_client.html', user_username=name_full, user_id=customer_id, user_info=statuses[sale_stage_id], user_ip='В обработке', user_phone=phone, user_mail=email, user_status=statuses[sale_stage_id], lead_status=statuses[sale_stage_id], sale_id=id_offer, user_comment=my_dict['comment'], client_text=client_text, data_value='2017-06-01T08:30')
-    else:
+        return render_template('403.html'), 403
+    except:
       return render_template('403.html'), 403
-  except:
-    return render_template('403.html'), 403
 
 @app.route('/process_data', methods=['POST'])
 def process_data():
