@@ -30,6 +30,7 @@ def php_argv(script_path, argument, argument2, argument3, argument4):
 def index(id_crm, id_user, id_offer):
   if id_offer != 'highLightTitle.png':
     result = php('byid.php', id_offer)
+    return f'{result}'
     my_dict = json.loads(result)
     return f'{my_dict}'
   
