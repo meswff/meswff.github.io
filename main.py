@@ -29,10 +29,8 @@ def php_argv(script_path, argument, argument2, argument3, argument4):
 @app.route('/<id_crm>/<id_user>/<id_offer>')
 def index(id_crm, id_user, id_offer):
   if id_offer != 'highLightTitle.png':
-    result = php('byid.php', id_offer)
-    return f'{result}'
+    result = php('byid.php', int(id_offer))
     my_dict = json.loads(result)
-    return f'{my_dict}'
   
     try:
       employee_id = my_dict['employee_id']
@@ -43,10 +41,7 @@ def index(id_crm, id_user, id_offer):
       customer_id = my_dict['customers_id']
     except:
       customer_id = 'Отсутствует'
-    try:
-      sale_stage_id = my_dict['sale_stage_id']
-    except:
-      return f'{my_dict}'
+    sale_stage_id = my_dict['sale_stage_id']
     
     try:
       name_full = my_dict['0']['name'] + ' ' + my_dict['0']['surname']
