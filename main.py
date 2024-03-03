@@ -103,7 +103,7 @@ async def send_message_async(telegram_id, employee_id, id_offer):
     def button():
       buttons: list = [
           [
-              InlineKeyboardButton(text='Перейти в CRM', url=f'https://2471028-yo82697.twc1.net/{telegram_id}/{employee_id}/{id_offer}')
+              InlineKeyboardButton(text='Перейти в CRM', web_app=WebAppInfo(url=f'https://2471028-yo82697.twc1.net/{telegram_id}/{employee_id}/{id_offer}'))
           ]
       ]
       keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
