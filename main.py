@@ -46,7 +46,7 @@ def index(id_crm, id_user, id_offer):
     try:
       sale_stage_id = my_dict['sale_stage_id']
     except:
-      return f'my_dict'
+      return f'{my_dict}'
     
     try:
       name_full = my_dict['0']['name'] + ' ' + my_dict['0']['surname']
