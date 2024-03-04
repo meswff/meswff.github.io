@@ -108,6 +108,7 @@ def button(telegram_id, employee_id, id_offer):
   return keyboard
 
 async def send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_deal):
+    print(telegram_id, employee_id, id_offer, stage_deal)
     statuses = {
       '66': 'NEW',
       '67': 'Звонок совершен',
