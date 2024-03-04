@@ -98,6 +98,15 @@ def process_data():
 
 message_sent = False 
 
+def button():
+  buttons: list = [
+      [
+          InlineKeyboardButton(text='Перейти в CRM', web_app=WebAppInfo(url=f'https://2471028-yo82697.twc1.net/{telegram_id}/{employee_id}/{id_offer}'))
+      ]
+  ]
+  keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
+  return keyboard
+
 async def send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_deal):
     statuses = {
       '66': 'NEW',
@@ -124,14 +133,6 @@ async def send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_d
       '73': 'АВТООБЗВОН',
       '72': 'Дубль/брак'
     }
-    def button():
-      buttons: list = [
-          [
-              InlineKeyboardButton(text='Перейти в CRM', web_app=WebAppInfo(url=f'https://2471028-yo82697.twc1.net/{telegram_id}/{employee_id}/{id_offer}'))
-          ]
-      ]
-      keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
-      return keyboard
     if stage_deal == 66 or stage_deal == 55:
         if id_offer != 'highLightTitle.png':  # Добавьте это условие, чтобы исключить отправку сообщения с id_offer равным 'highLightTitle.png'
             await bot.send_message(telegram_id, text=f'Вас назначили ответственным в сделке ID {id_offer}', reply_markup=button())
