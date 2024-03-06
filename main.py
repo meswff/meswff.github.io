@@ -98,30 +98,21 @@ async def send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_d
     ]
     keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
     return keyboard
-  #stage_deal == 66 or stage_deal == 55
-  if stage_deal != 66 or stage_deal != 55: 
-    if stage_deal != 'highLightTitle.png':  # Добавьте это условие, чтобы исключить отправку сообщения с id_offer равным 'highLightTitle.png'
+  if stage_deal != 'highLightTitle.png':
+    if stage_deal == 66:
+      try:
+          textf = f'Новая сделка - Подбор персонала\n\nID сделки: {id_offer}\nСтадия сделки: {stage_deal}'
+          await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button())
+      except:
+          pass
+    elif stage_deal == 55:
+      try:
+        textf = f'Новая сделка - Обращение покупателя\n\nID сделки: {id_offer}\nСтадия сделки: {stage_deal}'
+        await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button())
+      except:
+        pass
+    else: 
       await bot.send_message(telegram_id, text=f'Вас назначили ответственным в сделке ID {id_offer}', reply_markup=button())
-  else:
-    if stage_deal != 'highLightTitle.png':
-      if stage_deal in ['67','64','29','30','68','69','31','32']:
-        try:
-            textf = f'Новая сделка - Подбор персонала\n\nID сделки: {id_offer}\nСтадия сделки: {stage_deal}'
-            await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button())
-        except:
-            pass
-      elif stage_deal in ['74','75','77','78','79','80','81','82','84','83']:
-        try:
-          textf = f'Новая сделка - Работа с базой\n\nID сделки: {id_offer}\nСтадия сделки: {stage_deal}'
-          await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button())
-        except:
-          pass
-      else:
-        try:
-          textf = f'Новая сделка - Обращение покупателя\n\nID сделки: {id_offer}\nСтадия сделки: {stage_deal}'
-          await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button())
-        except:
-          pass
 
 
 @app.route('/post/<telegram_id>/<employee_id>/<id_offer>/<stage_deal>')
