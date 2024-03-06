@@ -89,7 +89,31 @@ def process_data():
 
 async def send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_deal):
   bot = Bot("6509666991:AAGYPMfmzqeo-wonBzjY4gB0CVgUOLsVW3w")
-  print('succes')
+  statuses = {
+      '66': 'NEW',
+      '67': 'Звонок совершен',
+      '64': 'Собеседование назначено',
+      '29': 'Собеседование проведено',
+      '30': 'Обучение началось',
+      '68': 'Остался через 14 дней',
+      '69': 'Остался через 30 дней',
+      '31': 'Приняли на работу',
+      '32': 'Закрыли сделку',
+      
+      '55': 'Новый',
+      '54': 'Неотвеченный',
+      '56': 'Уточненный',
+      '57': 'Отложенный спрос',
+      '58': 'Приглашение',
+      '59': 'Встреча',
+      '65': 'Без договора',
+      '60': 'Договор',
+      '61': 'Задаток',
+      '62': 'Закрытие сделки',
+      '63': 'Отказ',
+      '73': 'АВТООБЗВОН',
+      '72': 'Дубль/брак'
+    }
   def button():
     buttons: list = [
         [
@@ -101,13 +125,13 @@ async def send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_d
   if stage_deal != 'highLightTitle.png':
     if stage_deal == '66':
       try:
-          textf = f'Новая сделка - Подбор персонала\n\nID сделки: {id_offer}\nСтадия сделки: {stage_deal}'
+          textf = f'Новая сделка - Подбор персонала\n\nID сделки: {id_offer}\nСтадия сделки: {statuses[stage_deal]}'
           await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button())
       except:
           pass
     elif stage_deal == '55':
       try:
-        textf = f'Новая сделка - Обращение покупателя\n\nID сделки: {id_offer}\nСтадия сделки: {stage_deal}'
+        textf = f'Новая сделка - Обращение покупателя\n\nID сделки: {id_offer}\nСтадия сделки: {statuses[stage_deal]}'
         await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button())
       except:
         pass
