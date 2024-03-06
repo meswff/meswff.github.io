@@ -104,7 +104,7 @@ async def send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_d
       await bot.send_message(telegram_id, text=f'Вас назначили ответственным в сделке ID {id_offer}', reply_markup=button())
   else:
     if stage_deal != 'highLightTitle.png':
-      if stage_deal in ['66','67','64','29','30','68','69','31','32']:
+      if stage_deal in ['67','64','29','30','68','69','31','32']:
         try:
             textf = f'Новая сделка - Подбор персонала\n\nID сделки: {id_offer}\nСтадия сделки: {stage_deal}'
             await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button())
