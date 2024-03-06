@@ -96,84 +96,59 @@ def process_data():
 
   return jsonify({'result': data})
 
-message_sent = False 
-
-def button(telegram_id, employee_id, id_offer):
-  buttons: list = [
-      [
-          InlineKeyboardButton(text='Перейти в CRM', web_app=WebAppInfo(url=f'https://2471028-yo82697.twc1.net/{telegram_id}/{employee_id}/{id_offer}'))
-      ]
-  ]
-  keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
-  return keyboard
 
 async def send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_deal):
-  print(telegram_id, employee_id, id_offer, stage_deal)
-  statuses = {
-    '66': 'NEW',
-    '67': 'Звонок совершен',
-    '64': 'Собеседование назначено',
-    '29': 'Собеседование проведено',
-    '30': 'Обучение началось',
-    '68': 'Остался через 14 дней',
-    '69': 'Остался через 30 дней',
-    '31': 'Приняли на работу',
-    '32': 'Закрыли сделку',
-    
-    '55': 'Новый',
-    '54': 'Неотвеченный',
-    '56': 'Уточненный',
-    '57': 'Отложенный спрос',
-    '58': 'Приглашение',
-    '59': 'Встреча',
-    '65': 'Без договора',
-    '60': 'Договор',
-    '61': 'Задаток',
-    '62': 'Закрытие сделки',
-    '63': 'Отказ',
-    '73': 'АВТООБЗВОН',
-    '72': 'Дубль/брак'
-  }
-  if stage_deal == 66 or stage_deal == 55:
-      if id_offer != 'highLightTitle.png':  # Добавьте это условие, чтобы исключить отправку сообщения с id_offer равным 'highLightTitle.png'
-          await bot.send_message(telegram_id, text=f'Вас назначили ответственным в сделке ID {id_offer}', reply_markup=button(telegram_id, employee_id, id_offer))
-  else:
-    if stage_deal != 'highLightTitle.png':
-      if stage_deal == '66' or stage_deal == '67' or stage_deal == '64' or stage_deal == '29' or stage_deal == '30' or stage_deal == '68' or stage_deal == '69' or stage_deal == '31' or stage_deal == '32':
-          try:
-              textf = f'Новая сделка - Подбор персонала\n\nID сделки: {id_offer}\nСтадия сделки: {statuses[stage_deal]}'
-              await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button(telegram_id, employee_id, id_offer))
-          except:
-              pass
-      elif stage_deal == '74' or stage_deal == '75' or stage_deal == '77' or stage_deal == '78' or stage_deal == '79' or stage_deal == '80' or stage_deal == '81' or stage_deal == '82' or stage_deal == '84' or stage_deal == '83':
-          try:
-              textf = f'Новая сделка - Работа с базой\n\nID сделки: {id_offer}\nСтадия сделки: {statuses[stage_deal]}'
-              await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button(telegram_id, employee_id, id_offer))
-          except:
-              pass
-      else:
-          try:
-              textf = f'Новая сделка - Обращение покупателя\n\nID сделки: {id_offer}\nСтадия сделки: {statuses[stage_deal]}'
-              await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button(telegram_id, employee_id, id_offer))
-          except:
-              pass
+    def button():
+      buttons: list = [
+          [
+              InlineKeyboardButton(text='Перейти в CRM', web_app=WebAppInfo(url=f'https://2471028-yo82697.twc1.net/{telegram_id}/{employee_id}/{id_offer}'))
+          ]
+      ]
+      keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
+      return keyboard
+    if stage_deal == 66 or stage_deal == 55:
+        if id_offer != 'highLightTitle.png':  # Добавьте это условие, чтобы исключить отправку сообщения с id_offer равным 'highLightTitle.png'
+            await bot.send_message(telegram_id, text=f'Вас назначили ответственным в сделке ID {id_offer}', reply_markup=button())
+    else:
+        if stage_deal != 'highLightTitle.png':
+            if stage_deal == '66' or stage_deal == '67' or stage_deal == '64' or stage_deal == '29' or stage_deal == '30' or stage_deal == '68' or stage_deal == '69' or stage_deal == '31' or stage_deal == '32':
+                try:
+                    textf = f'Новая сделка - Подбор персонала\n\nID сделки: {id_offer}\nСтадия сделки: {stage_deal}'
+                    await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button())
+                except:
+                    pass
+            elif stage_deal == '74' or stage_deal == '75' or stage_deal == '77' or stage_deal == '78' or stage_deal == '79' or stage_deal == '80' or stage_deal == '81' or stage_deal == '82' or stage_deal == '84' or stage_deal == '83':
+                try:
+                    textf = f'Новая сделка - Работа с базой\n\nID сделки: {id_offer}\nСтадия сделки: {stage_deal}'
+                    await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button())
+                except:
+                    pass
+            else:
+                try:
+                    textf = f'Новая сделка - Обращение покупателя\n\nID сделки: {id_offer}\nСтадия сделки: {stage_deal}'
+                    await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button())
+                except:
+                    pass
 
 
 
 @app.route('/post/<telegram_id>/<employee_id>/<id_offer>/<stage_deal>')
 def send_message_sync(telegram_id, employee_id, id_offer, stage_deal):
-  asyncio.run(send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_deal))
+  
+  loop = asyncio.new_event_loop()
+  asyncio.set_event_loop(loop)
+  task = loop.create_task(send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_deal))
+  loop.run_until_complete(task)
+
   return "Message sent successfully"
 
 async def main_bot():
     await bot.delete_webhook()
     await dp.start_polling(bot, handle_as_tasks=True)
 
-@app.get(rule='/start_bot')
-def start_bot():
-    bot_process = Process(target=asyncio.run(main_bot()))
-    bot_process.start()
-    return str(bot_process.pid)
+async def my_async_function():
+    await asyncio.sleep(1)
+
 
 if __name__ == '__main__':
   app.run(ssl_context='adhoc')
