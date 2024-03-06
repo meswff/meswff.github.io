@@ -100,7 +100,7 @@ async def send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_d
     keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
     return keyboard
   #stage_deal == 66 or stage_deal == 55
-  if stage_deal == 66 or stage_deal == 55: 
+  if stage_deal != 66 or stage_deal != 55: 
     if id_offer != 'highLightTitle.png':  # Добавьте это условие, чтобы исключить отправку сообщения с id_offer равным 'highLightTitle.png'
       await bot.send_message(telegram_id, text=f'Вас назначили ответственным в сделке ID {id_offer}', reply_markup=button())
   else:
