@@ -1,11 +1,9 @@
 from flask import Flask, render_template, request, jsonify
 
 import subprocess
-import trio
 import datetime
 import time
 import asyncio
-from multiprocessing import Process
 
 from getinfo import get_info_about_sale
 
