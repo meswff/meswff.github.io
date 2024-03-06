@@ -57,3 +57,4 @@ def get_info_about_sale(sale_id):
         }
     except Exception as E:
         return E
+
