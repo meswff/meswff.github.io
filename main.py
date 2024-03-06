@@ -7,8 +7,7 @@ import asyncio
 
 from getinfo import get_info_about_sale
 
-from aiogram import Bot, Dispatcher, types
-from aiogram.filters import Command
+from aiogram import Bot
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
 
 app = Flask(__name__)
