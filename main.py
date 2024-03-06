@@ -122,6 +122,8 @@ async def send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_d
           await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button())
         except:
           pass
+    global message_executed
+    message_executed = False
 
 
 message_executed = False
@@ -132,7 +134,7 @@ def send_message_sync(telegram_id, employee_id, id_offer, stage_deal):
     if not message_executed:
         asyncio.run(send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_deal))
         message_executed = True
-    message_executed = False
+    
     return "Message sent successfully"
 
 if __name__ == '__main__':
