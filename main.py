@@ -122,8 +122,8 @@ async def send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_d
           await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button())
         except:
           pass
-    global message_executed
-    message_executed = False
+  global message_executed
+  message_executed = False
 
 
 message_executed = False
