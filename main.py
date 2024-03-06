@@ -136,7 +136,7 @@ async def send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_d
       except:
         pass
     else: 
-      await bot.send_message(telegram_id, text=f'Вас назначили ответственным в сделке ID {id_offer}', reply_markup=button())
+      await bot.send_message(telegram_id, text=f'Вас назначили ответственным в сделке ID {id_offer}\nСтадия: {statuses[stage_deal]}', reply_markup=button())
 
 
 @app.route('/post/<telegram_id>/<employee_id>/<id_offer>/<stage_deal>')
