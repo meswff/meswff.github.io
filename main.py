@@ -124,13 +124,16 @@ async def send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_d
           pass
 
 
+message_executed = False
 
 @app.route('/post/<telegram_id>/<employee_id>/<id_offer>/<stage_deal>')
 def send_message_sync(telegram_id, employee_id, id_offer, stage_deal):
-  #asyncio.run(send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_deal))
-  asyncio.run(send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_deal))
-  return "Message sent successfully"
-
+    global message_executed
+    if not message_executed:
+        asyncio.run(send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_deal))
+        message_executed = True
+    message_executed = False
+    return "Message sent successfully"
 
 if __name__ == '__main__':
   app.run(ssl_context='adhoc')
