@@ -14,12 +14,6 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
 app = Flask(__name__)
 
 
-
-def php(script_path, argument):
-  p = subprocess.Popen(['php', script_path, argument], stdout=subprocess.PIPE)
-  result = p.communicate()[0]
-  return result
-
 def php_argv(script_path, argument, argument2, argument3, argument4):
     p = subprocess.Popen(['php', script_path, argument, argument2, argument3, argument4], stdout=subprocess.PIPE)
     result = p.communicate()[0]
