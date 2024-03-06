@@ -99,13 +99,13 @@ async def send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_d
     keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
     return keyboard
   if stage_deal != 'highLightTitle.png':
-    if stage_deal == 66:
+    if stage_deal == '66':
       try:
           textf = f'Новая сделка - Подбор персонала\n\nID сделки: {id_offer}\nСтадия сделки: {stage_deal}'
           await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button())
       except:
           pass
-    elif stage_deal == 55:
+    elif stage_deal == '55':
       try:
         textf = f'Новая сделка - Обращение покупателя\n\nID сделки: {id_offer}\nСтадия сделки: {stage_deal}'
         await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button())
