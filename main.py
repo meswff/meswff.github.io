@@ -129,6 +129,7 @@ async def send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_d
 def send_message_sync(telegram_id, employee_id, id_offer, stage_deal):
   #asyncio.run(send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_deal))
   asyncio.run(send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_deal))
+  break
   return "Message sent successfully"
 
 
