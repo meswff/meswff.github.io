@@ -125,18 +125,18 @@ async def send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_d
   if stage_deal != 'highLightTitle.png':
     if stage_deal == '66':
       try:
-          textf = f'Новая сделка - Подбор персонала\n\nID сделки: {id_offer}\nСтадия сделки: {statuses[stage_deal]}'
+          textf = f'Новая сделка - Подбор персонала\n\nID сделки: {id_offer}\nСтадия сделки: #{statuses[stage_deal]}'
           await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button())
       except:
           pass
     elif stage_deal == '55':
       try:
-        textf = f'Новая сделка - Обращение покупателя\n\nID сделки: {id_offer}\nСтадия сделки: {statuses[stage_deal]}'
+        textf = f'Новая сделка - Обращение покупателя\n\nID сделки: {id_offer}\nСтадия сделки: #{statuses[stage_deal]}'
         await bot.send_message(chat_id=telegram_id, text=textf, reply_markup=button())
       except:
         pass
     else: 
-      await bot.send_message(telegram_id, text=f'Вас назначили ответственным в сделке ID {id_offer}\nСтадия: {statuses[stage_deal]}', reply_markup=button())
+      await bot.send_message(telegram_id, text=f'Вас назначили ответственным в сделке ID {id_offer}\nСтадия: #{statuses[stage_deal]}', reply_markup=button())
 
 
 @app.route('/post/<telegram_id>/<employee_id>/<id_offer>/<stage_deal>')
