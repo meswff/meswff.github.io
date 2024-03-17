@@ -4,8 +4,8 @@ function show() {
   }
 
   function submitForm() {
-    var selectedDate = None
-    var selectedComment = None
+    var selectedDate = null
+    var selectedComment = null
     
     var selectedSaleId = window.location.pathname.split('/');
     var selectedStatus = document.getElementById("statusSelect").value;
