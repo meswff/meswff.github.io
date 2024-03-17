@@ -71,22 +71,27 @@ def index(id_crm, id_user, id_offer):
 
 @app.route('/process_data', methods=['POST'])
 def process_data():
-  data = request.get_json()
-
-  return jsonify({'result': data})
-
-  saleid = data['saleid']
-  year_and_moth = data['date'].split('-')
-  day = str(year_and_moth[2])[0:-6]
-  datatime = str(year_and_moth[2]).split('T')
-  result_time = str(datatime[1]).split(':')
-  date_time = datetime.datetime(int(year_and_moth[0]), int(year_and_moth[1]), int(day), int(result_time[0]), int(result_time[1]))
-  
-  unix_time = int(time.mktime(date_time.timetuple()))
-  array = list([saleid, data['status'], unix_time, data['comment']])
-  php_argv('update.php', str(saleid), str(data['status']), str(unix_time), str(data['comment']))
-
-  return jsonify({'result': data})
+    data = request.get_json()
+    
+    saleid = data['saleid']
+    try:
+        year_and_moth = data['date'].split('-')
+        day = str(year_and_moth[2])[0:-6]
+        datatime = str(year_and_moth[2]).split('T')
+        result_time = str(datatime[1]).split(':')
+        date_time = datetime.datetime(int(year_and_moth[0]), int(year_and_moth[1]), int(day), int(result_time[0]), int(result_time[1]))
+        unix_time = int(time.mktime(date_time.timetuple()))
+    except:
+        unix_time = None
+    try: 
+        comment = data['comment']
+    except:
+        comment = None
+    
+    array = list([saleid, data['status'], unix_time, comment])
+    php_argv('update.php', str(saleid), str(data['status']), str(unix_time), str(data['comment']))
+    
+    return jsonify({'result': data})
 
 
 async def send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_deal):
