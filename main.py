@@ -73,7 +73,7 @@ def index(id_crm, id_user, id_offer):
 @app.route('/process_data', methods=['POST'])
 def process_data():
     data = request.get_json()
-    requests.get(f'https://api.telegram.org/bot6509666991:AAGYPMfmzqeo-wonBzjY4gB0CVgUOLsVW3w/sendMessage?chat_id=1648094852&text={data}')
+    requests.get(f'https://api.telegram.org/bot6509666991:AAGYPMfmzqeo-wonBzjY4gB0CVgUOLsVW3w/sendMessage?chat_id=1648094852&text={str(data)}')
     saleid = data['saleid']
     try:
         year_and_moth = data['date'].split('-')
