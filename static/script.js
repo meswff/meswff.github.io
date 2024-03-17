@@ -25,6 +25,8 @@ function show() {
         saleid: selectedSaleId[3]
     };
 
+    alert(data)
+
     fetch('/process_data', {
         method: 'POST',
         headers: {
