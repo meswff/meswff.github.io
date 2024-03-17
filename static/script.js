@@ -5,9 +5,18 @@ function show() {
 
   function submitForm() {
     var selectedSaleId = window.location.pathname.split('/');
+    try {
+        var selectedDate = document.getElementById('date').value;
+    } catch (err) {
+        selectedDate = None
+    }
     var selectedStatus = document.getElementById("statusSelect").value;
-    var selectedDate = document.getElementById('date').value;
-    var selectedComment = document.getElementById('comment').value;
+    try {
+        var selectedComment = document.getElementById('comment').value;
+    } catch (err) {
+        selectedComment = None
+    }
+    
 
     var data = {
         status: selectedStatus,
