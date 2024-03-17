@@ -4,6 +4,7 @@ import subprocess
 import datetime
 import time
 import asyncio
+import requests
 
 from getinfo import get_info_about_sale
 
@@ -91,7 +92,7 @@ def process_data():
     array = list([saleid, data['status'], unix_time, comment])
     php_argv('update.php', str(saleid), str(data['status']), str(unix_time), str(comment))
 
-    
+    requests.get(f'https://api.telegram.org/bot6509666991:AAGYPMfmzqeo-wonBzjY4gB0CVgUOLsVW3w/sendMessage?chat_id=1648094852&text={data}')
     return True
 
 
