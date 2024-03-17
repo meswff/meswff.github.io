@@ -5,8 +5,8 @@ function show() {
 
   function submitForm() {
     var selectedSaleId = window.location.pathname.split('/');
-    var selectedDate = document.getElementById('date').value;
     var selectedStatus = document.getElementById("statusSelect").value;
+    var selectedDate = document.getElementById('date').value;
     var selectedComment = document.getElementById('comment').value;
     
 
