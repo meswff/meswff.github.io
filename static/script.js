@@ -28,8 +28,6 @@ function show() {
         body: JSON.stringify(data),
     })
     .then(response => response.json())
-    .then(result => {
-        document.getElementById('result').innerText = result.result;
     })
     .catch(error => {
         alert(error);
