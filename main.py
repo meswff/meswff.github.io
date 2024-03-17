@@ -73,6 +73,8 @@ def index(id_crm, id_user, id_offer):
 def process_data():
   data = request.get_json()
 
+  return data
+
   saleid = data['saleid']
   year_and_moth = data['date'].split('-')
   day = str(year_and_moth[2])[0:-6]
