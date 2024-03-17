@@ -89,9 +89,9 @@ def process_data():
         comment = None
     
     array = list([saleid, data['status'], unix_time, comment])
-    php_argv('update.php', str(saleid), str(data['status']), str(unix_time), str(data['comment']))
+    php_argv('update.php', str(saleid), str(data['status']), str(unix_time), str(comment))
     
-    return jsonify({'result': data})
+    return True
 
 
 async def send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_deal):
