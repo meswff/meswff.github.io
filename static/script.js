@@ -29,7 +29,7 @@ function show() {
         document.getElementById('result').innerText = result.result;
     })
     .catch(error => {
-        alert('Ошибка:', error);
+        alert('Ошибка:' + error);
     });
     alert('Данные отправлены в CRM')
 }
