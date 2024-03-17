@@ -61,7 +61,6 @@ function toLocalISOString(date) {
     localDate.setMilliseconds(null);
     now.setMilliseconds(null)
     now.setSeconds(null)
-    now.setMinutes(null)
     return localDate.toISOString().slice(0, -1);
 };
   
