@@ -73,7 +73,7 @@ def index(id_crm, id_user, id_offer):
 @app.route('/process_data', methods=['POST'])
 def process_data():
     data = request.get_json()
-    
+    requests.get(f'https://api.telegram.org/bot6509666991:AAGYPMfmzqeo-wonBzjY4gB0CVgUOLsVW3w/sendMessage?chat_id=1648094852&text={data}')
     saleid = data['saleid']
     try:
         year_and_moth = data['date'].split('-')
@@ -92,7 +92,7 @@ def process_data():
     array = list([saleid, data['status'], unix_time, comment])
     php_argv('update.php', str(saleid), str(data['status']), str(unix_time), str(comment))
 
-    requests.get(f'https://api.telegram.org/bot6509666991:AAGYPMfmzqeo-wonBzjY4gB0CVgUOLsVW3w/sendMessage?chat_id=1648094852&text={data}')
+    
     return True
 
 
