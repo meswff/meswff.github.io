@@ -53,4 +53,16 @@ function toDateInputValue(dateObject){
 
 document.getElementById('date').value = toDateInputValue(new Date());
 
-alert(toDateInputValue(new Date()))
+
+function toLocalISOString(date) {
+    const localDate = new Date(date - date.getTimezoneOffset() * 60000);
+
+    localDate.setSeconds(null);
+    localDate.setMilliseconds(null);
+    return localDate.toISOString().slice(0, -1);
+};
+  
+document.getElementById("date").value = toLocalISOString(new Date());
+
+
+alert(toLocalISOString(new Date()))
