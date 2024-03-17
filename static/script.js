@@ -1,6 +1,6 @@
 function show() {
-    element = document.querySelector('.other_div')
-    element.style.visibility = 'visible';;
+    element = document.querySelector('.other_div');
+    element.style.visibility = 'visible';
   }
 
   function submitForm() {
@@ -52,3 +52,5 @@ function toDateInputValue(dateObject){
 };
 
 document.getElementById('date').value = toDateInputValue(new Date());
+
+alert(toDateInputValue(new Date()))
