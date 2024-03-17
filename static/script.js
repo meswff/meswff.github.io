@@ -25,7 +25,7 @@ function show() {
         saleid: selectedSaleId[3]
     };
 
-    alert(data)
+    alert(data[status], data[date], data[comment], data[saleid])
 
     fetch('/process_data', {
         method: 'POST',
