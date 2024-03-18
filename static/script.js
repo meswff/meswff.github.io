@@ -4,9 +4,6 @@ function show() {
   }
 
   function submitForm() {
-    var selectedDate = null
-    var selectedComment = null
-    
     var selectedSaleId = window.location.pathname.split('/');
     var selectedStatus = document.getElementById("statusSelect").value;
     var selectedDate = document.getElementById('date').value;
