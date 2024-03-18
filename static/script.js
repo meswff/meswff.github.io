@@ -26,7 +26,7 @@ function show() {
     })
     .then(response => response.json())
     .then(result => {
-        document.getElementById('result').innerText = result.value;
+        document.getElementById('result').innerText = result.result;
     })
     .catch(error => {
         alert(result)
