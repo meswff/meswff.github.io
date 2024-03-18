@@ -92,7 +92,7 @@ def process_data():
     php_argv('update.php', str(saleid), str(data['status']), str(unix_time), str(comment))
 
     
-    return True
+    return jsonify({"result": "success"})
 
 
 async def send_message_newdeal_async(telegram_id, employee_id, id_offer, stage_deal):
