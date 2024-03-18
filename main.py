@@ -7,6 +7,7 @@ import asyncio
 import requests
 
 from getinfo import get_info_about_sale
+from update import change_stage, add_comment
 
 from aiogram import Bot
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
@@ -75,6 +76,12 @@ def process_data():
     data = request.get_json()
     requests.get(f'https://api.telegram.org/bot6509666991:AAGYPMfmzqeo-wonBzjY4gB0CVgUOLsVW3w/sendMessage?chat_id=1648094852&text={str(data)}')
     saleid = data['saleid']
+    dict = get_info_about_sale(int(saleid)
+    try:
+        change_stage(saleid, data['status'])
+    except:
+        pass
+                               
     try:
         year_and_moth = data['date'].split('-')
         day = str(year_and_moth[2])[0:-6]
@@ -86,8 +93,9 @@ def process_data():
         unix_time = None
     try: 
         comment = data['comment']
+        add_comment(saleid, comment, dict[employee_id])
     except:
-        comment = None
+        pass
     
     #php_argv('update.php', str(saleid), str(data['status']), str(unix_time), str(comment))
 
