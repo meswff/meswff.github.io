@@ -89,7 +89,7 @@ def process_data():
     except:
         comment = None
     
-    php_argv('update.php', str(saleid), str(data['status']), str(unix_time), str(comment))
+    #php_argv('update.php', str(saleid), str(data['status']), str(unix_time), str(comment))
 
     
     return jsonify({'result': data})
