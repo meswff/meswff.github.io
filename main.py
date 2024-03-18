@@ -89,7 +89,6 @@ def process_data():
     except:
         comment = None
     
-    array = list([saleid, data['status'], unix_time, comment])
     php_argv('update.php', str(saleid), str(data['status']), str(unix_time), str(comment))
 
     
