@@ -93,7 +93,7 @@ def process_data():
         unix_time = None
     try: 
         comment = data['comment']
-        add_comment(saleid, comment, dict[employee_id])
+        add_comment(saleid, comment, dict['employee_id'])
     except:
         pass
     
