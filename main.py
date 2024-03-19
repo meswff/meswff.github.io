@@ -15,8 +15,8 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
 app = Flask(__name__)
 
 
-def php_argv(script_path, argument, argument2, argument3, argument4):
-    p = subprocess.Popen(['php', script_path, argument, argument2, argument3, argument4], stdout=subprocess.PIPE)
+def php_argv(script_path, argument, argument2):
+    p = subprocess.Popen(['php', script_path, argument, argument2], stdout=subprocess.PIPE)
     result = p.communicate()[0]
     return result
 
@@ -78,7 +78,7 @@ def process_data():
     saleid = data['saleid']
     dict = get_info_about_sale(int(saleid))
     try:
-        change_stage(int(saleid), int(data['status']))
+        php_argv('update.php', int(saleid), int(data['status']))
     except Exception as E:
         requests.get(f'https://api.telegram.org/bot6509666991:AAGYPMfmzqeo-wonBzjY4gB0CVgUOLsVW3w/sendMessage?chat_id=1648094852&text={str(E)}')
         pass
@@ -98,7 +98,7 @@ def process_data():
     except:
         pass
     
-    #php_argv('update.php', str(saleid), str(data['status']), str(unix_time), str(comment))
+    
 
     
     return jsonify({'result': data})
