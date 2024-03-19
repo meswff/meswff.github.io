@@ -11,8 +11,7 @@ def change_stage(sale_id, stage):
         'params[sales_status_id]': stage
     }
     
-    requests.post(url, headers=headers, data=data)
-    return True
+    return requests.post(url, headers=headers, data=data)
 
 def add_comment(sale_id, comment, employee_id):
     url = 'http://aires.astoria-tula.ru:81/sharedapi/sales/addComment'
