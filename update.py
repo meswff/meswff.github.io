@@ -3,7 +3,7 @@ import requests
 def change_stage(sale_id, stage):
     url = 'http://aires.astoria-tula.ru:81/sharedapi/sales/update'
     headers = {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/json'
     }
     data = {
         'apikey': '21d1c8300ca07c06bf8f3aac3c16c275',
