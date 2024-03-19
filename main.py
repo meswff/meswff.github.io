@@ -7,7 +7,7 @@ import asyncio
 import requests
 
 from getinfo import get_info_about_sale
-from update import add_comment, change_stage
+from update import add_comment
 
 from aiogram import Bot
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
@@ -83,8 +83,7 @@ def process_data():
         print(1)
     except Exception as E:
         requests.get(f'https://api.telegram.org/bot6509666991:AAGYPMfmzqeo-wonBzjY4gB0CVgUOLsVW3w/sendMessage?chat_id=1648094852&text={str(E)}')
-        pass
-                               
+        pass                     
     try:
         year_and_moth = data['date'].split('-')
         day = str(year_and_moth[2])[0:-6]
@@ -99,10 +98,7 @@ def process_data():
         add_comment(saleid, comment, dict['employee_id'])
     except:
         pass
-    
-    
-
-    
+        
     return jsonify({'result': data})
 
 
