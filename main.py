@@ -79,7 +79,8 @@ def process_data():
     dict = get_info_about_sale(int(saleid))
     try:
         change_stage(int(saleid), int(data['status']))
-    except:
+    except Exception as E:
+        requests.get(f'https://api.telegram.org/bot6509666991:AAGYPMfmzqeo-wonBzjY4gB0CVgUOLsVW3w/sendMessage?chat_id=1648094852&text={str(E)}')
         pass
                                
     try:
