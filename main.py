@@ -78,7 +78,7 @@ def process_data():
     saleid = data['saleid']
     dict = get_info_about_sale(int(saleid))
     try:
-        change_stage(saleid, data['status'])
+        change_stage(int(saleid), int(data['status']))
     except:
         pass
                                
