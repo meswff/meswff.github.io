@@ -11,7 +11,7 @@ def change_stage(sale_id, stage):
         'params[sales_status_id]': stage
     }
     
-    response = requests.post(url, headers=headers, data=data)
+    requests.post(url, headers=headers, data=data)
     return True
 
 def add_comment(sale_id, comment, employee_id):
@@ -26,5 +26,5 @@ def add_comment(sale_id, comment, employee_id):
         'params[author]': employee_id
     }
 
-    response = requests.post(url, headers=headers, data=data)
+    requests.post(url, headers=headers, data=data)
     return True
