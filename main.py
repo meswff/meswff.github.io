@@ -7,7 +7,7 @@ import asyncio
 import requests
 
 from getinfo import get_info_about_sale
-from update import change_stage, add_comment
+from update import add_comment
 
 from aiogram import Bot
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
@@ -73,6 +73,21 @@ def index(id_crm, id_user, id_offer):
 
 @app.route('/process_data', methods=['POST'])
 def process_data():
+    
+    def change_stage(sale_id, stage):
+        url = 'http://aires.astoria-tula.ru:81/sharedapi/sales/update'
+        headers = {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+        data = {
+            'apikey': '21d1c8300ca07c06bf8f3aac3c16c275',
+            'params[id]': sale_id,
+            'params[sales_status_id]': stage
+        }
+        
+        response = requests.post(url, headers=headers, data=data)
+        return True
+
     data = request.get_json()
     requests.get(f'https://api.telegram.org/bot6509666991:AAGYPMfmzqeo-wonBzjY4gB0CVgUOLsVW3w/sendMessage?chat_id=1648094852&text={str(data)}')
     saleid = data['saleid']
