@@ -73,28 +73,13 @@ def index(id_crm, id_user, id_offer):
 
 @app.route('/process_data', methods=['POST'])
 def process_data():
-    
-    def change_stage(sale_id, stage):
-        url = 'http://aires.astoria-tula.ru:81/sharedapi/sales/update'
-        headers = {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
-        data = {
-            'apikey': '21d1c8300ca07c06bf8f3aac3c16c275',
-            'params[id]': sale_id,
-            'params[sales_status_id]': stage
-        }
-        
-        response = requests.post(url, headers=headers, data=data)
-        return True
-
     data = request.get_json()
     requests.get(f'https://api.telegram.org/bot6509666991:AAGYPMfmzqeo-wonBzjY4gB0CVgUOLsVW3w/sendMessage?chat_id=1648094852&text={str(data)}')
     saleid = data['saleid']
     dict = get_info_about_sale(int(saleid))
-    requests.get(f'https://api.telegram.org/bot6509666991:AAGYPMfmzqeo-wonBzjY4gB0CVgUOLsVW3w/sendMessage?chat_id=1648094852&text={str(dict)}')
     try:
-        change_stage(int(saleid), int(data['status']))
+        #change_stage(int(saleid), int(data['status']))
+        print(1)
     except Exception as E:
         requests.get(f'https://api.telegram.org/bot6509666991:AAGYPMfmzqeo-wonBzjY4gB0CVgUOLsVW3w/sendMessage?chat_id=1648094852&text={str(E)}')
         pass
@@ -114,7 +99,7 @@ def process_data():
     except:
         pass
     
-    #php_argv('update.php', str(saleid), str(data['status']), str(unix_time), str(comment))
+    php_argv('update.php', str(saleid), str(data['status']), str(unix_time), str(comment))
 
     
     return jsonify({'result': data})
