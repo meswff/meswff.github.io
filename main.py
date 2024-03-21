@@ -91,6 +91,7 @@ def process_data():
         result_time = str(datatime[1]).split(':')
         date_time = datetime.datetime(int(year_and_moth[0]), int(year_and_moth[1]), int(day), int(result_time[0]), int(result_time[1]))
         unix_time = int(time.mktime(date_time.timetuple()))
+        php_argv('setorg.php', str(saleid), str(unix_time))
     except:
         unix_time = None
     try: 
