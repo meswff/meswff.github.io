@@ -58,16 +58,6 @@ class Api
         return $this->send("/stock/category");
     }
 
-    public function getEventsFilter(array $params = array())
-    {
-        return $this ->send("/org_events/get", $params);
-    }
-
-    public function insertEvent(array $params)
-    {
-        return $this ->send("/org_events/insert", $params);
-    }
-
     // поля
     public function getStockFields()
     {
@@ -850,6 +840,12 @@ class Api
     {
         return $this->send("/accounts/get", $params);
     }
+
+    public function update_org(array $params)
+    {
+        return $this->send("org_events/update", $params);
+    }
+    
 
     //Получение подробной информации по массиву счетов
     public function billsGetFull(array $ids)
