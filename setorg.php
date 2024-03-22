@@ -2,7 +2,7 @@
 
     require_once 'usage.php'; //настройте данный конфигурационный файл
 
-$insert_event = $api->getDocumentFilter(array( 
+$insert_event = $api->getDocumentsFilter(array( 
 	'event' => array(    
         'id' => $argv[1],
         'dtstart' => $argv[2],
