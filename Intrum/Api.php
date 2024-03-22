@@ -58,6 +58,11 @@ class Api
         return $this->send("/stock/category");
     }
 
+    public function getDocumentsFilter()
+    {
+        return $this->send("/blanks/filter");
+    }
+    
     // поля
     public function getStockFields()
     {
