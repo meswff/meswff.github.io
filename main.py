@@ -77,13 +77,14 @@ def process_data():
     requests.get(f'https://api.telegram.org/bot6509666991:AAGYPMfmzqeo-wonBzjY4gB0CVgUOLsVW3w/sendMessage?chat_id=1648094852&text={str(data)}')
     saleid = data['saleid']
     dict = get_info_about_sale(int(saleid))
-    try:
-        #change_stage(str(saleid), str(data['status']))
-        php_argv('update.php', str(saleid), str(data['status']))
-        print(1)
-    except Exception as E:
-        requests.get(f'https://api.telegram.org/bot6509666991:AAGYPMfmzqeo-wonBzjY4gB0CVgUOLsVW3w/sendMessage?chat_id=1648094852&text={str(E)}')
-        pass                     
+    if str(saleid) != 's1':
+        try:
+            #change_stage(str(saleid), str(data['status']))
+            php_argv('update.php', str(saleid), str(data['status']))
+            print(1)
+        except Exception as E:
+            requests.get(f'https://api.telegram.org/bot6509666991:AAGYPMfmzqeo-wonBzjY4gB0CVgUOLsVW3w/sendMessage?chat_id=1648094852&text={str(E)}')
+            pass                     
     try:
         year_and_moth = data['date'].split('-')
         day = str(year_and_moth[2])[0:-6]
